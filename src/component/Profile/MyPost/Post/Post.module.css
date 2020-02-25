@@ -1,0 +1,54 @@
+.userPost {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.userPost__header {
+    display: flex;
+    align-items: center;
+}
+
+.userPost__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.userPost__avatar img{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.userPost__author {
+    color: #2a5885;
+    display: block;
+}
+
+.userPost__author a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.userPost__author p {
+    color: #ccc;
+}
+
+.userPost__content {
+    margin: 15px 0px;
+    font-size: 15px;
+}
+
+.userPost__footer {
+    padding-top: 10px;
+    border-top: 1px solid rgba(192, 197, 213, 0.47);
+}
+
+.userPost__like {
+    color: #ccc;
+}
+
+.userPost__like:hover {
+    color: palevioletred;
+}

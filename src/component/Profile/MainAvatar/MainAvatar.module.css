@@ -1,0 +1,20 @@
+/*----- MainAvatar -----*/
+.avatar {
+    max-width: 220px;
+}
+.avatarImg {
+    display: block;
+    width: 100%;
+    height: 200px;
+    margin: 0px auto;
+}
+
+.avatarBtnFurther {
+    width: 65px;
+}
+
+.avatarEdit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}

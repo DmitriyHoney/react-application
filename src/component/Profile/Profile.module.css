@@ -1,0 +1,7 @@
+/*----- Profile -----*/
+.profileSection {
+    grid-area: profile;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-gap: 15px;
+}

@@ -1,0 +1,40 @@
+
+.userInfo {}
+
+.userInfo__status {
+    position: relative;
+}
+
+.userInfo__name {
+    font-size: 21px;
+    font-weight: 500;
+    color: #000;
+    margin-top: 15px;
+}
+
+.userInfo__twit {
+    margin-top: 0px;
+    color: rgba(12, 25, 16, 0.49);
+}
+
+.userInfo__online {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: #ccc;
+}
+
+.userDescr {
+    font-size: 15px;
+    color: #ccc;
+    margin-top: 15px;
+}
+
+.userDescrText {
+    margin-top: 5px;
+}
+
+.userDescrTitle {
+    color: #000;
+    font-weight: normal;
+}

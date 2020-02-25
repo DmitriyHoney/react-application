@@ -1,9 +1,9 @@
 import React from 'react';
 import './fonts/fontawesome/css/all.css';
 import './App.css';
-import Header from './component/Header';
-import Aside from './component/Aside';
-import Profile from './component/Profile';
+import Header from './component/Header/Header';
+import Aside from './component/Aside/Aside';
+import Profile from './component/Profile/Profile';
 
 
 function App() {
