@@ -1,28 +1,29 @@
 import React from 'react';
+import style from './Profile.module.css';
 
 function Profile() {
     return (
-        <div className="profile">
-            <div className="avatar default-card">
-                <a href="#" className="avatar-img">
-                    <img src="https://farm2.static.flickr.com/1235/1264548661_57f72bd57b_b.jpg" alt="avatar" className="avatar-img" />
+        <div className={style.profileSection}>
+            <div className={`${style.avatar} default-card`}>
+                <a href="#" className={style.avatarImg}>
+                    <img src="https://farm2.static.flickr.com/1235/1264548661_57f72bd57b_b.jpg" alt="avatar" className={style.avatarImg} />
                 </a>
-                <div className="avatar-edit">
+                <div className={style.avatarEdit}>
                     <button className="ghost-btn">Edit</button>
-                    <button className="ghost-btn avatar-btn_further">
+                    <button className={`ghost-btn ${style.avatarBtnFurther}`}>
                         <i className="fa fa-ellipsis-h"></i>
                     </button>
                 </div>
             </div>
-            <div className="user-info default-card">
-                <div className="user-info__status">
-                    <h1 className="user-info__name">
+            <div className={`${style.userInfo} default-card`}>
+                <div className={style.userInfo__status}>
+                    <h1 className={style.userInfo__name}>
                         Arnold Schwarzenegger
                     </h1>
-                    <p className="user-info__twit">
+                    <p className={style.userInfo__twit}>
                         set a status message
                     </p>
-                    <span className="user-info__online">
+                    <span className={style.userInfo__online}>
                         online
                     </span>
                 </div>
