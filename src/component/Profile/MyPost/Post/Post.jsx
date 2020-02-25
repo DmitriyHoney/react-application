@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Post.module.css";
 import SmallAvatar from "../../SmallAvatar/SmallAvatar";
 
-function Post() {
+function Post(props) {
     return(
         <div className={`${style.userPost} default-card`}>
             <div className={style.userPost__header}>
@@ -15,11 +15,14 @@ function Post() {
                 </div>
             </div>
             <div className={style.userPost__content}>
-                Hello, world!
+                {props.message}
             </div>
             <div className={style.userPost__footer}>
                 <a href="#" className={style.userPost__like}>
                     <i className="fa fa-heart"></i>
+                    <span className={style.userPost__likeCont}>
+                        {props.likeCount}
+                    </span>
                 </a>
             </div>
         </div>

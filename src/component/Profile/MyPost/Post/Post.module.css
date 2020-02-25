@@ -34,8 +34,14 @@
 
 .userPost__like {
     color: #ccc;
+    display: flex;
+    align-items: center;
 }
 
 .userPost__like:hover {
     color: palevioletred;
+}
+
+.userPost__likeCont {
+    margin-left: 7px;
 }
