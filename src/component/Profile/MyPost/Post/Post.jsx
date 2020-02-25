@@ -1,13 +1,12 @@
 import React from "react";
 import style from "./Post.module.css";
+import SmallAvatar from "../../SmallAvatar/SmallAvatar";
 
 function Post() {
     return(
         <div className={`${style.userPost} default-card`}>
             <div className={style.userPost__header}>
-                <div className={style.userPost__avatar}>
-                    <img src="https://i.pinimg.com/originals/b7/8f/05/b78f052268a91c0d5c0bfdde7187833d.jpg" alt="avatar"/>
-                </div>
+                <SmallAvatar />
                 <div className={style.userPost__author}>
                     <a href="#">
                         Arnold Schwarzenegger

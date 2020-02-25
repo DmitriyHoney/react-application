@@ -23,6 +23,23 @@
   background-color: #dfe6ed;
 }
 
+.main-btn {
+  background-color: #5b88bd;
+  border-radius: 5px;
+  color: #fff;
+  padding: 7px 15px;
+}
+
+.main-btn:hover {
+  background-color: #4d82bd;
+}
+
+.main-btn:active {
+  background-color: #4374bd;
+  position: relative;
+  top: -3px;
+}
+
 body {
   font-size: 16px;
   background-color: #edeef0;
@@ -35,6 +52,11 @@ img {
 
 button {
   cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+textarea {
   border: none;
   outline: none;
 }

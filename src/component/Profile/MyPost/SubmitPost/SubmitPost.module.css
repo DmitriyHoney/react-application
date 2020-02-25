@@ -1,0 +1,15 @@
+.submitPost {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.submitPost__text {
+    width: 100%;
+    resize: none;
+}
+
+.submitPost__text:focus::input-placeholder {
+    color: red;
+}
