@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import style from './Aside.module.css';
 
 function Aside() {
@@ -7,51 +8,51 @@ function Aside() {
             <nav>
                 <ul className={style.menu}>
                     <li className={style.item}>
-                        <a href="#" className={style.itemLink}>
+                        <NavLink to="/profile" className={style.itemLink}>
                             <i className="fa fa-home"></i>
                             My Profile
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={style.item}>
-                        <a href="#" className={style.itemLink}>
+                        <NavLink to="/feed" className={style.itemLink}>
                             <i className="fa fa-align-left"></i>
                             News
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={style.item}>
-                        <a href="#" className={style.itemLink}>
+                        <NavLink to="/dialogs" className={style.itemLink}>
                             <i className="fa fa-comments"></i>
                             Messages
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={style.item}>
-                        <a href="#" className={style.itemLink}>
+                        <NavLink to="/friend" className={style.itemLink}>
                             <i className="fa fa-user"></i>
                             Friends
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={style.item}>
                         <a href="#" className={style.itemLink}>
                             <i className="fa fa-users"></i>
-                            Communities
+                            Communities!!!
                         </a>
                     </li>
                     <li className={style.item}>
                         <a href="#" className={style.itemLink}>
                             <i className="fa fa-music"></i>
-                            Music
+                            Music!!!
                         </a>
                     </li>
                     <li className={style.item}>
                         <a href="#" className={style.itemLink}>
                             <i className="fa fa-film"></i>
-                            Videos
+                            Videos!!!
                         </a>
                     </li>
                     <li className={style.item}>
                         <a href="#" className={style.itemLink}>
                             <i className="fa fa-gamepad"></i>
-                            Games
+                            Games!!!
                         </a>
                     </li>
                 </ul>

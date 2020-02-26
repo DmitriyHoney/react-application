@@ -1,0 +1,47 @@
+
+.dialogsWrap {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    grid-gap: 20px;
+}
+
+
+.dialogItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #000;
+}
+
+.dialogItemAct {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.dialogItem:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.chatWrap div {
+    margin-bottom: 15px;
+}
+
+.myMessage {
+    background-color: #5b88bd;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 25px;
+    text-align: right;
+}
+
+.friendMessage {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0, .25);
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 25px;
+    text-align: left;
+}
