@@ -15,8 +15,8 @@ const Dialogs = () => {
         {userId: 5, name: 'Jack Sheppard', src: 'http://static2.kinootziv.com/source/files/wallpapers/matt/matthewfox67978.jpg'}
     ];
 
-    let renderDialogsData = dialogsData.map( dialog => {
-        return <UserDialog userId={dialog.userId} name={dialog.name} src={dialog.src}/>;
+    let renderDialogsData = dialogsData.map( (dialog, index) => {
+        return <UserDialog key={index} userId={dialog.userId} name={dialog.name} src={dialog.src}/>;
     });
 
     return(

@@ -11,8 +11,8 @@ const MyPost = () => {
         {message: "В частности, сплочённость команды профессионалов представляет собой интересный эксперимент проверки существующих финансовых и административных условий.", likeCount: 42},
     ];
 
-    let renderMessageData = messageData.map( (post) => {
-        return <Post message={post.message} likeCount={post.likeCount}/>
+    let renderMessageData = messageData.map( (post, index) => {
+        return <Post key={index} message={post.message} likeCount={post.likeCount}/>
     });
 
     return(
