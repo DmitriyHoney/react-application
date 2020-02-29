@@ -10,7 +10,7 @@ import Feed from "./component/Feed/Feed";
 import Friend from "./component/Friend/Friend";
 
 
-function App() {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className="App">

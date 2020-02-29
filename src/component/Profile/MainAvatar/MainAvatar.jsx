@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./MainAvatar.module.css";
 
-function MainAvatar() {
+const MainAvatar = (props) => {
     return (
         <div className={`${style.avatar} default-card`}>
             <a href="#" className={style.avatarImg}>

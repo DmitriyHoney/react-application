@@ -1,0 +1,10 @@
+.myMessage {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0, .25);
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 25px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}

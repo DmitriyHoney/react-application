@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import SubmitPost from "./SubmitPost/SubmitPost";
 
 
-const MyPost = () => {
+const MyPost = (props) => {
     let messageData = [
         {message: "My first post! Hello, world!", likeCount: 7},
         {message: "You don`t know me, but believe me", likeCount: 25},

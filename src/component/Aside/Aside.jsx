@@ -1,20 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import style from './Aside.module.css';
+import AsideLinks from "./AsideLinks/AsideLinks";
 
-const AsideItem = (props) => {
-    let url = props.url,
-        iconClass = `fa ${props.icon}`,
-        linkText = props.text;
-    return (
-        <li className={style.item}>
-            <NavLink to={url} className={style.itemLink}>
-                <i className={iconClass}></i>
-                {linkText}
-            </NavLink>
-        </li>
-    )
-};
 
 const Aside = (props) => {
     let asideLinkData = [
@@ -29,7 +17,7 @@ const Aside = (props) => {
     ];
 
     let renderAsideLinks = asideLinkData.map( (elem, index) => {
-        return <AsideItem key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
+        return <AsideLinks key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
     });
 
     return (

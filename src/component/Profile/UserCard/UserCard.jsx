@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './UserCard.module.css';
 
-function UserCard() {
+const UserCard = (props) => {
     return(
         <div className={`${style.userInfo} default-card`}>
             <div className={style.userInfo__status}>
