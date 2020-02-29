@@ -1,10 +1,10 @@
 import React from 'react';
+import AsideLinks from './AsideLinks/AsideLinks';
 import style from './Aside.module.css';
-import AsideLinks from "./AsideLinks/AsideLinks";
+
 
 
 const Aside = (props) => {
-
 
     let renderAsideLinks = props.aside.map( (elem, index) => {
         return <AsideLinks key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
@@ -15,9 +15,9 @@ const Aside = (props) => {
             <nav>
                 <ul className={style.menu}>
                     {renderAsideLinks}
-            </ul>
-        </nav>
-        < /aside>
+                </ul>
+            </nav>
+        </aside>
     )
 }
 
