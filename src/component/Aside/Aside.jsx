@@ -6,7 +6,7 @@ import AsideLinks from "./AsideLinks/AsideLinks";
 const Aside = (props) => {
 
 
-    let renderAsideLinks = props.asideData.map( (elem, index) => {
+    let renderAsideLinks = props.aside.map( (elem, index) => {
         return <AsideLinks key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
     });
 

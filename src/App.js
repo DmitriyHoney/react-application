@@ -11,15 +11,14 @@ import Friend from "./component/Friend/Friend";
 
 
 const App = (props) => {
-    let dataBase = props.dataBase;
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
                 <div className="main container">
-                    <Aside asideData={dataBase.asideData}/>
-                    <Route path='/profile' render={() => <Profile postData={dataBase.postData} />}/>
-                    <Route path='/dialogs' render={() => <Dialogs dialogsData={dataBase.dialogsData} />}/>
+                    <Aside aside={props.aside}/>
+                    <Route path='/profile' render={() => <Profile posts={props.posts} />}/>
+                    <Route path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} />}/>
                     <Route path='/feed' component={Feed}/>
                     <Route path='/friend' component={Friend}/>
                 </div>

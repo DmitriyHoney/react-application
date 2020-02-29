@@ -6,7 +6,7 @@ import ChatMessage from "./ChatMessage/ChatMessage";
 
 const Dialogs = (props) => {
 
-    let renderDialogsData = props.dialogsData.map( (dialog, index) => {
+    let renderDialogsData = props.dialogs.map( (dialog, index) => {
         return <DialogCardOfFriend key={index} userId={dialog.userId} name={dialog.name} src={dialog.src}/>;
     });
 
