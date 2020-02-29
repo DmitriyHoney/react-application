@@ -5,13 +5,8 @@ import SubmitPost from "./SubmitPost/SubmitPost";
 
 
 const MyPost = (props) => {
-    let messageData = [
-        {message: "My first post! Hello, world!", likeCount: 7},
-        {message: "You don`t know me, but believe me", likeCount: 25},
-        {message: "В частности, сплочённость команды профессионалов представляет собой интересный эксперимент проверки существующих финансовых и административных условий.", likeCount: 42},
-    ];
 
-    let renderMessageData = messageData.map( (post, index) => {
+    let renderMessageData = props.postData.map( (post, index) => {
         return <Post key={index} message={post.message} likeCount={post.likeCount}/>
     });
 
