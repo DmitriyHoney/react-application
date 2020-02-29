@@ -17,6 +17,16 @@ const Data = {
         {message: "My first post! Hello, world!", likeCount: 7},
         {message: "You don`t know me, but believe me", likeCount: 25},
         {message: "В частности, сплочённость команды профессионалов представляет собой интересный эксперимент проверки существующих финансовых и административных условий.", likeCount: 42},
+    ],
+    asideData: [
+        {url: '/profile', icon: 'fa-home', text: 'My Profile'},
+        {url: '/feed', icon: 'fa-align-left', text: 'News'},
+        {url: '/dialogs', icon: 'fa-comments', text: 'Messages'},
+        {url: '/friend', icon: 'fa-user', text: 'Friends'},
+        {url: '#', icon: 'fa-users', text: 'Communities!!!'},
+        {url: '#', icon: 'fa-music', text: 'Music!!!'},
+        {url: '#', icon: 'fa-film', text: 'Videos!!!'},
+        {url: '#', icon: 'fa-gamepad', text: 'Games!!!'},
     ]
 }
 

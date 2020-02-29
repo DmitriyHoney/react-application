@@ -17,7 +17,7 @@ const App = (props) => {
             <div className="App">
                 <Header/>
                 <div className="main container">
-                    <Aside/>
+                    <Aside asideData={dataBase.asideData}/>
                     <Route path='/profile' render={() => <Profile postData={dataBase.postData} />}/>
                     <Route path='/dialogs' render={() => <Dialogs dialogsData={dataBase.dialogsData} />}/>
                     <Route path='/feed' component={Feed}/>
