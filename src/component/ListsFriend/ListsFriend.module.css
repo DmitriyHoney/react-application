@@ -1,0 +1,15 @@
+.listWrap {
+    margin-top: 30px;
+}
+
+.listImageWrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.listHead {
+    font-weight: normal;
+
+}

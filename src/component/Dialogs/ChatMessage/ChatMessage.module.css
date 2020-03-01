@@ -1,4 +1,23 @@
 .myMessage {
+    background-color: #4d82bd;
+    box-shadow: 0 0 5px rgba(0,0,0, .25);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.myMessage p {
+    order: -1;
+    margin-right: 15px;
+}
+
+
+.friendMessage {
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0,0,0, .25);
     border-radius: 5px;

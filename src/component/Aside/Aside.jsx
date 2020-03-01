@@ -1,12 +1,13 @@
 import React from 'react';
 import AsideLinks from './AsideLinks/AsideLinks';
 import style from './Aside.module.css';
+import ListsFriend from "../ListsFriend/ListsFriend";
 
 
 
 const Aside = (props) => {
 
-    let renderAsideLinks = props.aside.map( (elem, index) => {
+    let renderAsideLinks = props.sidebar.links.map( (elem, index) => {
         return <AsideLinks key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
     });
 
@@ -17,6 +18,7 @@ const Aside = (props) => {
                     {renderAsideLinks}
                 </ul>
             </nav>
+            <ListsFriend show='3' state={props.sidebar.friends}/>
         </aside>
     )
 }

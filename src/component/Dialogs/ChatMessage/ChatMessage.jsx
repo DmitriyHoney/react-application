@@ -3,10 +3,19 @@ import style from './ChatMessage.module.css';
 import SmallAvatar from "../../Profile/SmallAvatar/SmallAvatar";
 
 const ChatMessage = (props) => {
+    let completeStyle;
+
+    if (props.send === 'friend') {
+        completeStyle = style.friendMessage;
+    } else {
+        completeStyle = style.myMessage;
+    }
+
+    console.log(completeStyle);
     return(
-        <div className={style.myMessage}>
+        <div className={completeStyle}>
             <SmallAvatar src={props.src}/>
-            {props.message}
+            <p>{props.message}</p>
         </div>
     )
 }
