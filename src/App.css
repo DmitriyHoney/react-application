@@ -1,4 +1,8 @@
 /*----- Specify -----*/
+* {
+  box-sizing: border-box;
+}
+
 .container {
   width: 990px;
   margin: 0 auto;

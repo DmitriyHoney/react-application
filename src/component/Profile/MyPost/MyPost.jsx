@@ -12,7 +12,7 @@ const MyPost = (props) => {
 
     return(
         <div className={style.postWrap}>
-            <SubmitPost/>
+            <SubmitPost addPost={props.addPost}/>
             {renderMessageData}
         </div>
     )

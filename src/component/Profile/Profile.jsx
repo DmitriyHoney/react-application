@@ -9,7 +9,7 @@ const Profile = (props) => {
         <div className={style.profileSection}>
             <MainAvatar/>
             <UserCard/>
-            <MyPost postData={props.posts}/>
+            <MyPost postData={props.posts} addPost={props.addPost}/>
         </div>
     )
 }

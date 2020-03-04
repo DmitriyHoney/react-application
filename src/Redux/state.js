@@ -32,4 +32,11 @@ const state = {
     ]
 };
 
+export let addUserPost = (userText) => {
+    debugger;
+    let newUserPost = {message: userText, likeCount: 0};
+    state.profilePage.push(newUserPost);
+    debugger;
+}
+
 export default state;
