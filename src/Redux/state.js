@@ -1,3 +1,5 @@
+import {renderEntireDom} from "../render";
+
 const state = {
     sidebar: {
         links : [
@@ -33,10 +35,10 @@ const state = {
 };
 
 export let addUserPost = (userText) => {
-    debugger;
+
     let newUserPost = {message: userText, likeCount: 0};
-    state.profilePage.push(newUserPost);
-    debugger;
+    state.profilePage.unshift(newUserPost);
+    renderEntireDom(state);
 }
 
 export default state;

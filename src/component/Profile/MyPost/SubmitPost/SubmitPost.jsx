@@ -4,13 +4,12 @@ import SmallAvatar from "../../SmallAvatar/SmallAvatar";
 import {renderEntireDom} from '../../../../render';
 
 const SubmitPost = (props) => {
-
     let referenceTextarea = React.createRef();
     const handleMyPost = () => {
         let elem = referenceTextarea.current;
         props.addPost(elem.value);
         elem.value = '';
-        renderEntireDom(props.state);
+
     }
 
     return (
