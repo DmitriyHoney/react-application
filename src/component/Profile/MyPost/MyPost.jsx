@@ -6,13 +6,12 @@ import SubmitPost from "./SubmitPost/SubmitPost";
 
 const MyPost = (props) => {
 
-    let renderMessageData = props.postData.map( (post, index) => {
+    let renderMessageData = props.postData.posts.map( (post, index) => {
         return <Post key={index} message={post.message} likeCount={post.likeCount}/>
     });
-
     return(
         <div className={style.postWrap}>
-            <SubmitPost addPost={props.addPost}/>
+            <SubmitPost addPost={props.addPost} updatePost={props.updatePost} value={props.postData.newPostValue}/>
             {renderMessageData}
         </div>
     )
