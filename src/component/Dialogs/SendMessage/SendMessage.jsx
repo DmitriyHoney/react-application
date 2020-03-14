@@ -3,10 +3,8 @@ import style from './SendMessage.module.css';
 import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../../../Redux/state";
 
 const SendMessage = (props) => {
-    let userMessageElement = React.createRef();
-
-    const updateTextarea = () => {
-        props.dispatch(updateMessageTextareaCreateAction(userMessageElement.current.value));
+    const updateTextarea = (e) => {
+        props.dispatch(updateMessageTextareaCreateAction(e.target.value));
     };
 
     const handleSendMessage = () => {
@@ -17,7 +15,6 @@ const SendMessage = (props) => {
         <div className={style.sendMesage}>
             <textarea
                 className={style.sendInput}
-                ref={userMessageElement}
                 value={props.value}
                 onChange={updateTextarea}
             />

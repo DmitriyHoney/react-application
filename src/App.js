@@ -1,6 +1,6 @@
 //Libraries
 import React from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 //Styles
 import './fonts/fontawesome/css/all.css';
@@ -17,7 +17,6 @@ import Friend from "./component/Friend/Friend";
 
 const App = (props) => {
     return (
-        <BrowserRouter>
             <div className="App">
                 <Header/>
                 <div className="main container">
@@ -28,7 +27,6 @@ const App = (props) => {
                     <Route path='/friend' render={() => <Friend />}/>
                 </div>
             </div>
-        </BrowserRouter>
     );
 };
 

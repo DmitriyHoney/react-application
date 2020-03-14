@@ -3,15 +3,13 @@ import style from "./SubmitPost.module.css";
 import SmallAvatar from "../../SmallAvatar/SmallAvatar";
 import {addNewPostCreateAction, updatePostTextareaCreateAction} from "../../../../Redux/state";
 
-let referenceTextarea = React.createRef();
-
 const SubmitPost = (props) => {
     const handleMyPost = () => {
         props.dispatch(addNewPostCreateAction());
     };
 
-    function handleTextarea() {
-        let elemNewValue = referenceTextarea.current.value;
+    function handleTextarea(e) {
+        let elemNewValue = e.target.value;
         props.dispatch(updatePostTextareaCreateAction(elemNewValue));
     }
 
@@ -22,12 +20,11 @@ const SubmitPost = (props) => {
                 onChange={handleTextarea}
                 className={style.submitPost__text}
                 placeholder="What`s new?"
-                ref={referenceTextarea}
                 value={props.value}
             />
             <button className="main-btn" onClick={handleMyPost}>Post</button>
         </div>
     )
-}
+};
 
 export default SubmitPost;

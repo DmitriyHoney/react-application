@@ -97,22 +97,10 @@ const store = {
     }
 };
 
-export const updatePostTextareaCreateAction = (text) => {
-    return {type: UPDATE_POST_TEXTAREA, newValue: text}
-};
-
-export const addNewPostCreateAction = (text) => {
-    return {type: ADD_USER_POST}
-};
-
-export const updateMessageTextareaCreateAction = (text) => {
-    return {type: UPDATE_MESSAGE_TEXTAREA, newValue: text}
-};
-
-export const addNewMessageCreateAction = () => {
-    return {type: ADD_NEW_MESSAGE}
-};
+export const updatePostTextareaCreateAction = (text) => ({type: UPDATE_POST_TEXTAREA, newValue: text});
+export const addNewPostCreateAction = () => ({type: ADD_USER_POST});
+export const updateMessageTextareaCreateAction = (text) => ({type: UPDATE_MESSAGE_TEXTAREA, newValue: text});
+export const addNewMessageCreateAction = () => ({type: ADD_NEW_MESSAGE});
 
 window.store = store;
-
 export default store;
