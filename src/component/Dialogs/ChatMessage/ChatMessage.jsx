@@ -11,13 +11,12 @@ const ChatMessage = (props) => {
         completeStyle = style.myMessage;
     }
 
-    console.log(completeStyle);
     return(
         <div className={completeStyle}>
             <SmallAvatar src={props.src}/>
             <p>{props.message}</p>
         </div>
     )
-}
+};
 
 export default ChatMessage;

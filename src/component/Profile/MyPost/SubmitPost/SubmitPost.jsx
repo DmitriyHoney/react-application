@@ -1,18 +1,18 @@
 import React from "react";
 import style from "./SubmitPost.module.css";
 import SmallAvatar from "../../SmallAvatar/SmallAvatar";
+import {addNewPostCreateAction, updatePostTextareaCreateAction} from "../../../../Redux/state";
 
 let referenceTextarea = React.createRef();
 
 const SubmitPost = (props) => {
-    console.log(props.updatePost);
     const handleMyPost = () => {
-        props.addPost();
-    }
+        props.dispatch(addNewPostCreateAction());
+    };
 
-    let handleTextarea = () => {
+    function handleTextarea() {
         let elemNewValue = referenceTextarea.current.value;
-        props.updatePost(elemNewValue);
+        props.dispatch(updatePostTextareaCreateAction(elemNewValue));
     }
 
     return (

@@ -1,29 +1,27 @@
 import React from "react";
 import style from './SendMessage.module.css';
+import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../../../Redux/state";
 
 const SendMessage = (props) => {
-    console.log(props.updateChatTextarea);
     let userMessageElement = React.createRef();
 
-    const sendMessageFriend = () => {
-        let textareaMessage = userMessageElement.current;
-        alert(textareaMessage.value);
-        textareaMessage.value = '';
-    }
-
     const updateTextarea = () => {
-        props.updateChatTextarea(userMessageElement.current.value);
-    }
+        props.dispatch(updateMessageTextareaCreateAction(userMessageElement.current.value));
+    };
+
+    const handleSendMessage = () => {
+        props.dispatch(addNewMessageCreateAction());
+    };
 
     return (
         <div className={style.sendMesage}>
             <textarea
                 className={style.sendInput}
                 ref={userMessageElement}
-                value={props.chatTextarea}
+                value={props.value}
                 onChange={updateTextarea}
             />
-            <button className="main-btn" onClick={sendMessageFriend}>Send</button>
+            <button className="main-btn" onClick={handleSendMessage}>Send</button>
         </div>
     )
 };
