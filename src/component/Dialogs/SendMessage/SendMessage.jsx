@@ -1,6 +1,6 @@
 import React from "react";
 import style from './SendMessage.module.css';
-import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../../../Redux/state";
+import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../../../Redux/messages-reducer";
 
 const SendMessage = (props) => {
     const updateTextarea = (e) => {

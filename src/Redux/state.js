@@ -1,7 +1,5 @@
-const ADD_USER_POST             = 'ADD-USER-POST';
-const UPDATE_POST_TEXTAREA      = 'UPDATE-POST-TEXTAREA';
-const UPDATE_MESSAGE_TEXTAREA   = 'UPDATE-MESSAGE-TEXTAREA';
-const ADD_NEW_MESSAGE           = 'ADD-NEW-MESSAGE';
+import profileReducer from "./profile-reducer";
+import messageReducer from "./messages-reducer";
 
 const store = {
     _state: {
@@ -78,29 +76,14 @@ const store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_USER_POST) {
-            let userMessage = this.getState().profilePage.newPostValue,
-                newUserPost = {message: userMessage, likeCount: 0};
-            this.getState().profilePage.posts.unshift(newUserPost);
-            this._renderEntireDom(this.getStore());
-            this.getState().profilePage.newPostValue = '';
-        } else if (action.type === UPDATE_POST_TEXTAREA) {
-            this.getState().profilePage.newPostValue = action.newValue;
-            this._renderEntireDom(this.getStore());
-        } else if (action.type === UPDATE_MESSAGE_TEXTAREA) {
-            this.getState().dialogsPage.chatTextarea = action.newValue;
-            this._renderEntireDom(this.getStore());
-        } else if (action.type === ADD_NEW_MESSAGE) {
-            this.getState().dialogsPage.chatTextarea = '';
-            this._renderEntireDom(this.getStore());
-        }
+        this.getState().profilePage = profileReducer(this.getState().profilePage, action);
+        this.getState().dialogsPage = messageReducer(this.getState().dialogsPage, action);
+        this._renderEntireDom(this.getStore());
     }
 };
 
-export const updatePostTextareaCreateAction = (text) => ({type: UPDATE_POST_TEXTAREA, newValue: text});
-export const addNewPostCreateAction = () => ({type: ADD_USER_POST});
-export const updateMessageTextareaCreateAction = (text) => ({type: UPDATE_MESSAGE_TEXTAREA, newValue: text});
-export const addNewMessageCreateAction = () => ({type: ADD_NEW_MESSAGE});
+
+
 
 window.store = store;
 export default store;

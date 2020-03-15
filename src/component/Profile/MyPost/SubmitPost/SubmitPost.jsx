@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./SubmitPost.module.css";
 import SmallAvatar from "../../SmallAvatar/SmallAvatar";
-import {addNewPostCreateAction, updatePostTextareaCreateAction} from "../../../../Redux/state";
+import {addNewPostCreateAction, updatePostTextareaCreateAction} from "../../../../Redux/profile-reducer";
 
 const SubmitPost = (props) => {
     const handleMyPost = () => {
