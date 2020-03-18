@@ -1,7 +1,19 @@
 const ADD_USER_POST             = 'ADD-USER-POST';
 const UPDATE_POST_TEXTAREA      = 'UPDATE-POST-TEXTAREA';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    newPostValue: '',
+    posts: [
+        {message: "My first post! Hello, world!", likeCount: 7},
+        {message: "You don`t know me, but believe me", likeCount: 25},
+        {
+            message: "В частности, сплочённость команды профессионалов представляет собой интересный эксперимент проверки существующих финансовых и административных условий.",
+            likeCount: 42
+        }
+    ],
+};
+
+const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_USER_POST:
             let userMessage = state.newPostValue,

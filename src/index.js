@@ -3,7 +3,7 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import store from './Redux/state';
+import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -17,7 +17,9 @@ let renderEntireDom = (store) => {
 
 renderEntireDom(store);
 
-store.subscribe(renderEntireDom);
+store.subscribe(() => {
+    renderEntireDom(store);
+});
 
 
 
