@@ -32,7 +32,6 @@ let initialState = {
 };
 
 const asideReducer = (state = initialState, action) => {
-    debugger;
     return state;
 };
 

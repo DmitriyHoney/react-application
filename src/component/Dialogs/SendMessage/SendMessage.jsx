@@ -4,11 +4,11 @@ import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../.
 
 const SendMessage = (props) => {
     const updateTextarea = (e) => {
-        props.dispatch(updateMessageTextareaCreateAction(e.target.value));
+        props.updateMessageTextarea(e.target.value)
     };
 
     const handleSendMessage = () => {
-        props.dispatch(addNewMessageCreateAction());
+        props.addNewMessage();
     };
 
     return (

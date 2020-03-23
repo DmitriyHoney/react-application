@@ -10,7 +10,7 @@ const Profile = (props) => {
         <div className={style.profileSection}>
             <MainAvatar/>
             <UserCard/>
-            <MyPost postData={props.page} dispatch={props.dispatch} />
+            <MyPost profilePage={props.profilePage} addNewPost={props.addNewPost} updatePostTextarea={props.updatePostTextarea}/>
         </div>
     )
 }

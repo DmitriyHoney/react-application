@@ -5,12 +5,12 @@ import {addNewPostCreateAction, updatePostTextareaCreateAction} from "../../../.
 
 const SubmitPost = (props) => {
     const handleMyPost = () => {
-        props.dispatch(addNewPostCreateAction());
+        props.addNewPost();
     };
 
     function handleTextarea(e) {
         let elemNewValue = e.target.value;
-        props.dispatch(updatePostTextareaCreateAction(elemNewValue));
+        props.updatePostTextarea(elemNewValue);
     }
 
     return (

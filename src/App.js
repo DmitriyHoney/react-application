@@ -9,10 +9,10 @@ import './App.css';
 //Components
 import Header from './component/Header/Header';
 import Aside from './component/Aside/Aside';
-import Profile from './component/Profile/Profile';
-import Dialogs from "./component/Dialogs/Dialogs";
 import Feed from "./component/Feed/Feed";
 import Friend from "./component/Friend/Friend";
+import ContainerDialogs from "./component/Dialogs/ContainerDialogs";
+import ContainerProfile from "./component/Profile/ContainerProfile";
 
 
 const App = (props) => {
@@ -21,8 +21,8 @@ const App = (props) => {
                 <Header/>
                 <div className="main container">
                     <Aside sidebar={props.state.sidebar}/>
-                    <Route path='/profile' render={() => <Profile page={props.state.profilePage} dispatch={props.dispatch} />}/>
-                    <Route path='/dialogs' render={() => <Dialogs page={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
+                    <Route path='/profile' render={() => <ContainerProfile />}/>
+                    <Route path='/dialogs' render={() => <ContainerDialogs />} />
                     <Route path='/feed' render={() => <Feed />}/>
                     <Route path='/friend' render={() => <Friend />}/>
                 </div>

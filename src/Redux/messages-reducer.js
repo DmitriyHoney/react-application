@@ -15,13 +15,19 @@ let initialState = {
 const messageReducer = (state = initialState, action) => {
     switch(action.type) {
         case UPDATE_MESSAGE_TEXTAREA:
-            state.chatTextarea = action.newValue;
-            return state;
+            return {
+                ...state,
+                chatTextarea: action.newValue
+            }
         case ADD_NEW_MESSAGE:
-            state.chatTextarea = '';
-            return state;
+            return {
+                ...state,
+                chatTextarea: ''
+            }
         default:
-            return state;
+            return {
+                ...state
+            }
     }
 };
 
