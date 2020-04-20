@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './Feed.module.css';
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-function Feed() {
+const Feed = (props) => {
     return(
         <div className={`default-card`}>
             Feed
@@ -9,4 +10,4 @@ function Feed() {
     )
 }
 
-export default Feed;
+export default withAuthRedirect(Feed);

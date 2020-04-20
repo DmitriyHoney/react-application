@@ -8,7 +8,7 @@ function Post(props) {
             <div className={style.userPost__header}>
                 <SmallAvatar src="https://i.pinimg.com/originals/b7/8f/05/b78f052268a91c0d5c0bfdde7187833d.jpg"/>
                 <div className={style.userPost__author}>
-                    <a href="#">
+                    <a href="#" className={style.name}>
                         Arnold Schwarzenegger
                     </a>
                     <p><time dateTime="2012-12-23">8 Feb 2017</time></p>

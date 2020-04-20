@@ -2,6 +2,7 @@ import React from 'react';
 import AsideLinks from './AsideLinks/AsideLinks';
 import style from './Aside.module.css';
 import ListsFriend from "../ListsFriend/ListsFriend";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 
@@ -23,4 +24,4 @@ const Aside = (props) => {
     )
 }
 
-export default Aside;
+export default withAuthRedirect(Aside);

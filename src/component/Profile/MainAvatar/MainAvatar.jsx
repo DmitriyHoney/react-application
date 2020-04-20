@@ -1,11 +1,13 @@
 import React from "react";
 import style from "./MainAvatar.module.css";
 
+import defaultUser from "../../../assets/image/default-user.png";
+
 const MainAvatar = (props) => {
     return (
         <div className={`${style.avatar} default-card`}>
             <a href="#" className={style.avatarImg}>
-                <img src="https://farm2.static.flickr.com/1235/1264548661_57f72bd57b_b.jpg" alt="avatar" className={style.avatarImg} />
+                <img src={props.avatarSrc || defaultUser} alt="avatar" className={style.avatarImg} />
             </a>
             <div className={style.avatarEdit}>
                 <button className="ghost-btn">Edit</button>

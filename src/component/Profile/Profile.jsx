@@ -1,16 +1,14 @@
 import React from 'react';
 import style from './Profile.module.css';
 import MyPost from "./MyPost/MyPost";
-import UserCard from "./UserCard/UserCard";
-import MainAvatar from "./MainAvatar/MainAvatar";
+import ProfileCard from "./ProfileCard/ProfileCard";
 
 const Profile = (props) => {
-
     return (
         <div className={style.profileSection}>
-            <MainAvatar/>
-            <UserCard/>
-            <MyPost profilePage={props.profilePage} addNewPost={props.addNewPost} updatePostTextarea={props.updatePostTextarea}/>
+            <ProfileCard currentUser={props.profilePage.currentUser}/>
+            {props.profilePage.isMyPage && <MyPost profilePage={props.profilePage}/>}
+
         </div>
     )
 }

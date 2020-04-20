@@ -1,6 +1,7 @@
 /*----- MainAvatar -----*/
 .avatar {
     max-width: 220px;
+    max-height: 257px;
 }
 .avatarImg {
     display: block;

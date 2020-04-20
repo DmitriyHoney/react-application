@@ -1,0 +1,10 @@
+.remember {
+    width: auto !important;
+    margin: 20px 0px 0px 15px;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

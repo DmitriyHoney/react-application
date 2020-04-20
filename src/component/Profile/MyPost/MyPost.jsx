@@ -11,7 +11,7 @@ const MyPost = (props) => {
 
     return(
         <div className={style.postWrap}>
-            <SubmitPost addNewPost={props.addNewPost} updatePostTextarea={props.updatePostTextarea} value={props.profilePage.newPostValue}/>
+            <SubmitPost value={props.profilePage.newPostValue}/>
             {renderMessageData}
         </div>
     )

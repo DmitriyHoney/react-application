@@ -1,8 +1,10 @@
-const ADD_USER_POST             = 'ADD-USER-POST';
-const UPDATE_POST_TEXTAREA      = 'UPDATE-POST-TEXTAREA';
+import {profileApi} from "../api/api";
+
+const ADD_USER_POST = 'ADD_USER_POST';
+const SET_DISPLAYED_USER = 'SET_DISPLAYED_USER';
+const IS_MY_PAGE = 'IS_MY_PAGE';
 
 let initialState = {
-    newPostValue: '',
     posts: [
         {message: "My first post! Hello, world!", likeCount: 7},
         {message: "You don`t know me, but believe me", likeCount: 25},
@@ -11,6 +13,20 @@ let initialState = {
             likeCount: 42
         }
     ],
+    currentUser: { //Текущий отображаемый пользователь
+        aboutMe: null,
+        contacts: {facebook: null, website: null, vk: null, twitter: null, instagram: null},
+        lookingForAJob: false,
+        lookingForAJobDescription: null,
+        fullName: '',
+        userId: 0,
+        photos: {
+            small: null,
+            large: null
+        }
+    },
+    myId: 6722,
+    isMyPage: true
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -18,20 +34,50 @@ const profileReducer = (state = initialState, action) => {
         case ADD_USER_POST:
             return {
                 ...state,
-                posts: [{message: state.newPostValue, likeCount: 0}, ...state.posts],
-                newPostValue: ''
-            };
-        case UPDATE_POST_TEXTAREA:
+                posts: [{message: action.textNewPost, likeCount: 0}, ...state.posts]
+            }
+        case SET_DISPLAYED_USER:
             return {
                 ...state,
-                newPostValue: action.newValue
-            };
+                currentUser: {...action.userDataFromApi}
+            }
+        case IS_MY_PAGE:
+            return {
+                ...state,
+                isMyPage: state.myId === action.userId
+            }
         default:
             return {...state};
     }
 };
 
-export const updatePostTextareaCreateAction = (text) => ({type: UPDATE_POST_TEXTAREA, newValue: text});
-export const addNewPostCreateAction = () => ({type: ADD_USER_POST});
+
+//ActionCreator
+const addNewPostCreateAction = (textNewPost) => ({type: ADD_USER_POST, textNewPost});
+const setDisplayedCurrentUser = (userDataFromApi) => ({type: SET_DISPLAYED_USER, userDataFromApi});
+const isMyPageAC = (userId) => ({type: IS_MY_PAGE, userId});
+
+//ThunkCallback
+export const addNewPostThuhnkCallback = (textNewPost) => (dispatch) => {
+    dispatch(addNewPostCreateAction(textNewPost));
+}
+export const getProfilePageThunkCallback = (userId = initialState.myId) => (dispatch) => {
+    dispatch(isMyPageAC(userId))
+    profileApi.getProfilePeople(userId)
+        .then(response => {
+            dispatch(setDisplayedCurrentUser(response.data))
+        })
+}
 
 export default profileReducer;
+/*
+    aboutMe: null
+    contacts: {facebook: null, website: null, vk: null, twitter: null, instagram: null, …}
+    lookingForAJob: false
+    lookingForAJobDescription: null
+    fullName: "WhiteHoney"
+    userId: 6722
+    photos:
+        small: null
+    large: null
+ */

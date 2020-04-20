@@ -3,3 +3,13 @@
     background-color: #4a76a8;
     padding: 15px 0px;
 }
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: #fff;
+}

@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.name {
+    color: #2a5885;
+}
+
 .userPost__author {
     color: #2a5885;
     display: block;
