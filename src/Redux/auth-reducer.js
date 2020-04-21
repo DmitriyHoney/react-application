@@ -58,16 +58,12 @@ export const loginTheSiteThunkCallback = (formData) => (dispatch) => {
             if (response.data.resultCode === 0) {
                 dispatch(togglePreloader(false));
                 dispatch(toggleAuthState(true));
-                authApi.getAuthState()
-                    .then(response => {
-                        dispatch(toggleAuthState(true));
-                        dispatch(setUserData(response.data.data));
-                    })
+                dispatch(getAuthStateUser());
             }
         })
 }
 export const logoutTheSiteCallback = () => (dispatch) => {
-    authApi.loginOutTheSite()
+    authApi.logOutTheSite()
         .then(response => {
             dispatch(setDefaultState())
         })

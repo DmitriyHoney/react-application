@@ -28,7 +28,7 @@ export const authApi = {
         let {email, password, rememberMe} = formData;
         return instance.post(`auth/login`, {email, password, rememberMe})
     },
-    loginOutTheSite() {
+    logOutTheSite() {
         return instance.delete(`auth/login`)
     },
 }

@@ -26,7 +26,6 @@ class Login extends React.Component {
             <div>
                 {this.props.preloader && <Preloader/>}
                 {!this.props.preloader && <LoginForm onSubmit={this.onSubmit}/>}
-
             </div>
         )
     }

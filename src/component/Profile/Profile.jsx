@@ -8,7 +8,6 @@ const Profile = (props) => {
         <div className={style.profileSection}>
             <ProfileCard currentUser={props.profilePage.currentUser}/>
             {props.profilePage.isMyPage && <MyPost profilePage={props.profilePage}/>}
-
         </div>
     )
 }
