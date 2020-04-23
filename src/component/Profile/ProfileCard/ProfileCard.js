@@ -8,7 +8,7 @@ const ProfileCard = (props) => {
     return(
         <div className={s.profileSection}>
             <MainAvatar avatarSrc={photos.large}/>
-            <UserInfo name={fullName} aboutMe={aboutMe} contacts={contacts}/>
+            <UserInfo name={fullName} aboutMe={aboutMe} contacts={contacts} status={props.status}/>
         </div>
     )
 }

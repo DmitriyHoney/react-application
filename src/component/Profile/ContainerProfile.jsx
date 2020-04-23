@@ -4,11 +4,12 @@ import Profile from "./Profile";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
-import {getProfilePageThunkCallback} from "../../Redux/profile-reducer";
+import {getProfilePageThunkCallback, getUserStatusThunkCallback} from "../../Redux/profile-reducer";
+import {getProfilePageSelect} from "../../Redux/selectors";
 
 let mapStateToProps = (state) => {
     return {
-        profilePage: state.profilePage
+        profilePage: getProfilePageSelect(state)
     }
 };
 
@@ -20,6 +21,7 @@ class ContainerProfile extends React.Component {
     componentDidMount() { //Запрос страницы пользователя, если userId нет, тогда переход на свою страницу
         let userId = this.props.match.params.userId;
         this.props.getProfilePageThunkCallback(userId);
+        this.props.getUserStatusThunkCallback(userId);
     }
 
     render() {
@@ -34,7 +36,7 @@ class ContainerProfile extends React.Component {
 
 
 export default compose(
-    connect(mapStateToProps, {getProfilePageThunkCallback}),
+    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback}),
     withAuthRedirect,
     withRouter
 )(ContainerProfile)

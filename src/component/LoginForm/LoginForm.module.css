@@ -8,3 +8,11 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+.someError {
+    border: 1px solid red;
+    color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
+}

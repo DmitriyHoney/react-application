@@ -7,6 +7,7 @@ import { Field, reduxForm } from 'redux-form'
 import {required, minLengthCreator, email} from "../../utils/validator/validator";
 import {Input} from "../../common/FormsControls/FormsControls";
 
+let minLength5 = minLengthCreator(5);
 
 let mapStateToProps = (state) => {
     return {
@@ -14,42 +15,38 @@ let mapStateToProps = (state) => {
     }
 }
 
-
-let minLength5 = minLengthCreator(5);
-
 class LoginForm extends React.Component{
     constructor(props) {
         super(props);
     }
 
     render() {
+        console.log(this.props);
         if (this.props.isAuth) return <Redirect to='/profile' />
-        else return <LoginFormComponent handleSubmit={this.props.handleSubmit}/>
+        else return(
+            <div className={`default-card ${s.loginForm}`}>
+                <form className="form" onSubmit={this.props.handleSubmit}>
+                    <Field name="email" type="text" placeholder="E-mail" component={Input} validate={[required, email]}/>
+                    <Field name="password" type="password" placeholder="Password" component={Input} validate={[required, minLength5]}/>
+                    <div className={s.rememberMe}>
+                        <label htmlFor="rememberMe">Remember me</label>
+                        <Field name="rememberMe" type="checkbox" component={"input"} className={s.remember}/>
+                    </div>
+                    {this.props.error && <div className={s.someError}>
+                        {this.props.error}
+                    </div>}
+
+                    <button className="main-btn">Войти</button>
+                </form>
+            </div>
+        )
     }
 
 };
 
-const LoginFormComponent = props => {
-    return(
-        <div className={`default-card ${s.loginForm}`}>
-            <form className="form" onSubmit={props.handleSubmit}>
-                <Field name="email" type="text" placeholder="E-mail" component={Input} validate={[required, email]}/>
-                <Field name="password" type="text" placeholder="Password" component={Input} validate={[required, minLength5]}/>
-                <div className={s.rememberMe}>
-                    <label htmlFor="rememberMe">Remember me</label>
-                    <Field name="rememberMe" type="checkbox" component={"input"} className={s.remember}/>
-                </div>
-                <button className="main-btn">Войти</button>
-            </form>
-        </div>
-    )
-};
-
-
-
-
-
 export default compose(
-    reduxForm({form: 'loginForm'}),
     connect(mapStateToProps, {}),
+    reduxForm({form: 'loginForm'})
 )(LoginForm)
+
+
