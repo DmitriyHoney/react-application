@@ -3,7 +3,7 @@ import style from './Login.module.css';
 import LoginForm from "../LoginForm/LoginForm";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getAuthStateUser, loginTheSiteThunkCallback} from "../../Redux/auth-reducer";
+import {loginTheSiteThunkCallback} from "../../Redux/auth-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 
 let mapStateToProps = (state) => {

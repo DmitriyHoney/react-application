@@ -1,4 +1,6 @@
 import {authApi} from "../api/api";
+import {stopSubmit} from "redux-form";
+import {setInitialize} from "./app-reducer";
 
 const TOGGLE_AUTH = 'TOGGLE_AUTH';
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -41,7 +43,7 @@ const setUserData = (stateFromApi) => ({type: SET_USER_DATA, stateFromApi});
 const setDefaultState = () => ({type: SET_DEFAULT_STATE});
 //Thunck
 export const getAuthStateUser = () => (dispatch) => {
-    authApi.getAuthState()
+    return authApi.getAuthState()
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(toggleAuthState(true));
@@ -59,6 +61,10 @@ export const loginTheSiteThunkCallback = (formData) => (dispatch) => {
                 dispatch(togglePreloader(false));
                 dispatch(toggleAuthState(true));
                 dispatch(getAuthStateUser());
+            } else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Unknown error';
+                dispatch(togglePreloader(false));
+                dispatch(stopSubmit('loginForm', {_error: message}))
             }
         })
 }

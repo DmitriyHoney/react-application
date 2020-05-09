@@ -6,10 +6,10 @@ let initialState = {
         {url: '/dialogs', icon: 'fa-comments', text: 'Messages'},
         //{url: '/friend', icon: 'fa-user', text: 'Friends'},
         {url: '/users', icon: 'fa-user', text: 'Users'},
+        {url: '/training', icon: 'fa-gamepad', text: 'Training'},
         {url: '#', icon: 'fa-users', text: 'Communities!!!'},
         {url: '#', icon: 'fa-music', text: 'Music!!!'},
-        {url: '#', icon: 'fa-film', text: 'Videos!!!'},
-        {url: '#', icon: 'fa-gamepad', text: 'Games!!!'}
+        {url: '#', icon: 'fa-film', text: 'Videos!!!'}
     ],
     friends: [
         {userId: 1, name: 'Pavel Durov', src: 'https://rossaprimavera.ru/static/files/2c7ca8526ecb.jpg'},

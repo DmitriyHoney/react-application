@@ -2,25 +2,12 @@ import React from 'react';
 import style from './Header.module.css';
 import Header from "./Header";
 import {connect} from "react-redux";
-import {getAuthStateUser, logoutTheSiteCallback} from "../../Redux/auth-reducer";
+import {logoutTheSiteCallback} from "../../Redux/auth-reducer";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-let mapStateToProps = (state) => {
-    return {
-        authPage: state.authPage
-    }
-}
+let mapStateToProps = (state) => ({});
 
 class HeaderContainer extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        this.props.getAuthStateUser();
-    }
-
     logOut = () => {
         this.props.logoutTheSiteCallback()
     }
@@ -34,7 +21,7 @@ class HeaderContainer extends React.Component{
 }
 
 export default compose(
-    connect(mapStateToProps, {getAuthStateUser, logoutTheSiteCallback})
+    connect(mapStateToProps, {logoutTheSiteCallback})
 )(HeaderContainer)
 
 

@@ -12,3 +12,37 @@ export const minLengthCreator       = min => value => {
     if (value.length < min) return `Min length is ${min} symbols`;
     return undefined;
 };
+
+
+
+
+//For Training
+export const requireField = value => (value || typeof value === 'number' ? undefined : 'Required');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

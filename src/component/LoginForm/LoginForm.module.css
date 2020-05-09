@@ -8,3 +8,9 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+.commonError {
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+}

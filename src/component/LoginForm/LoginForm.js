@@ -24,7 +24,7 @@ class LoginForm extends React.Component{
 
     render() {
         if (this.props.isAuth) return <Redirect to='/profile' />
-        else return <LoginFormComponent handleSubmit={this.props.handleSubmit}/>
+        else return <LoginFormComponent handleSubmit={this.props.handleSubmit} error={this.props.error}/>
     }
 
 };
@@ -34,12 +34,17 @@ const LoginFormComponent = props => {
         <div className={`default-card ${s.loginForm}`}>
             <form className="form" onSubmit={props.handleSubmit}>
                 <Field name="email" type="text" placeholder="E-mail" component={Input} validate={[required, email]}/>
-                <Field name="password" type="text" placeholder="Password" component={Input} validate={[required, minLength5]}/>
+                <Field name="password" type="password" placeholder="Password" component={Input} validate={[required, minLength5]}/>
                 <div className={s.rememberMe}>
                     <label htmlFor="rememberMe">Remember me</label>
                     <Field name="rememberMe" type="checkbox" component={"input"} className={s.remember}/>
                 </div>
                 <button className="main-btn">Войти</button>
+                {props.error &&
+                    <div className={s.commonError}>
+                        {props.error}
+                    </div>
+                }
             </form>
         </div>
     )
