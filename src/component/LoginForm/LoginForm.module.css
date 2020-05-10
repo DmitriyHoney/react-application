@@ -9,8 +9,16 @@
     justify-content: flex-start;
 }
 
+
 .commonError {
     border: 1px solid red;
     border-radius: 5px;
     color: red;
+}
+.someError {
+    border: 1px solid red;
+    color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
 }

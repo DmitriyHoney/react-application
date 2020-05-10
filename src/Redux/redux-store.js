@@ -17,6 +17,7 @@ let reducers = combineReducers({
     authPage: authReducer,
     app: appReducer,
     form: formReducer
+
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

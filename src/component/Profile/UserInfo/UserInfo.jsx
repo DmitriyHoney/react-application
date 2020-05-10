@@ -1,31 +1,18 @@
 import React from 'react';
 import style from './UserInfo.module.css';
+import UserStatus from "../UserStatus/UserStatus";
 
 const UserInfo = (props) => {
     return(
         <div className={`${style.userInfo} default-card`}>
-            <UserStatus name={props.name}/>
+            <UserStatus name={props.name} status={props.status}/>
             <AboutMe aboutMe={props.aboutMe}/>
             <UserSocial contacts={props.contacts}/>
         </div>
     )
 }
 
-const UserStatus = props => {
-    return(
-        <div className={style.userInfo__status}>
-            <h1 className={style.userInfo__name}>
-                {props.name}
-            </h1>
-            <p className={style.userInfo__twit}>
-                set a status message
-            </p>
-            <span className={style.userInfo__online}>
-                online
-            </span>
-        </div>
-    )
-};
+
 const AboutMe = props => {
     return(
         <div className={style.userDescr}>

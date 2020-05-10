@@ -1,6 +1,5 @@
 import {authApi} from "../api/api";
 import {stopSubmit} from "redux-form";
-import {setInitialize} from "./app-reducer";
 
 const TOGGLE_AUTH = 'TOGGLE_AUTH';
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -54,11 +53,9 @@ export const getAuthStateUser = () => (dispatch) => {
         })
 };
 export const loginTheSiteThunkCallback = (formData) => (dispatch) => {
-    dispatch(togglePreloader(true));
     authApi.loginTheSite(formData)
         .then(response => {
             if (response.data.resultCode === 0) {
-                dispatch(togglePreloader(false));
                 dispatch(toggleAuthState(true));
                 dispatch(getAuthStateUser());
             } else {

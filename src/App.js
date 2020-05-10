@@ -16,14 +16,16 @@ import ContainerProfile from "./component/Profile/ContainerProfile";
 import ContainerUsers from "./component/Users/ContainerUsers";
 import Login from "./component/Login/Login";
 import HeaderContainer from "./component/Header/HeaderContainer";
+
 import TrainSection from "./component/Training/Forms";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {getInitializeStateThunkCallback} from "./Redux/app-reducer";
+
 import Preloader from "./common/Preloader/Preloader";
 
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
         initialize: state.app.initialize,
         authPage: state.authPage
@@ -58,5 +60,6 @@ class App extends React.Component {
 
 
 export default compose(
-    connect(mapStateToProps, {getInitializeStateThunkCallback})
-)(App);
+    connect(mapStateToProps, {getInitializeStateThunkCallback}),
+)(App)
+

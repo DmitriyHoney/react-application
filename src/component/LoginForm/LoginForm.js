@@ -7,6 +7,7 @@ import { Field, reduxForm } from 'redux-form'
 import {required, minLengthCreator, email} from "../../utils/validator/validator";
 import {Input} from "../../common/FormsControls/FormsControls";
 
+let minLength5 = minLengthCreator(5);
 
 let mapStateToProps = (state) => {
     return {
@@ -14,15 +15,13 @@ let mapStateToProps = (state) => {
     }
 }
 
-
-let minLength5 = minLengthCreator(5);
-
 class LoginForm extends React.Component{
     constructor(props) {
         super(props);
     }
 
     render() {
+        console.log(this.props);
         if (this.props.isAuth) return <Redirect to='/profile' />
         else return <LoginFormComponent handleSubmit={this.props.handleSubmit} error={this.props.error}/>
     }
@@ -52,9 +51,9 @@ const LoginFormComponent = props => {
 
 
 
-
-
 export default compose(
-    reduxForm({form: 'loginForm'}),
     connect(mapStateToProps, {}),
+    reduxForm({form: 'loginForm'})
 )(LoginForm)
+
+

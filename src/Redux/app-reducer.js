@@ -1,11 +1,11 @@
-import {authApi} from "../api/api";
 import {getAuthStateUser} from "./auth-reducer";
 
 const SET_INITIALIZE = 'SET_INITIALIZE';
 
 let initialState = {
     initialize: false,
-};
+}
+
 
 const appReducer = (state = initialState, action) => {
     switch (action.type) {

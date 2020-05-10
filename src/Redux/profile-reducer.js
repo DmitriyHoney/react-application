@@ -3,6 +3,7 @@ import {profileApi} from "../api/api";
 const ADD_USER_POST = 'ADD_USER_POST';
 const SET_DISPLAYED_USER = 'SET_DISPLAYED_USER';
 const IS_MY_PAGE = 'IS_MY_PAGE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initialState = {
     posts: [
@@ -26,11 +27,12 @@ let initialState = {
         }
     },
     myId: 6722,
-    isMyPage: true
+    isMyPage: true,
+    status: null
 };
 
 const profileReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case ADD_USER_POST:
             return {
                 ...state,
@@ -46,6 +48,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isMyPage: state.myId === action.userId
             }
+        case SET_USER_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
         default:
             return {...state};
     }
@@ -56,6 +63,7 @@ const profileReducer = (state = initialState, action) => {
 const addNewPostCreateAction = (textNewPost) => ({type: ADD_USER_POST, textNewPost});
 const setDisplayedCurrentUser = (userDataFromApi) => ({type: SET_DISPLAYED_USER, userDataFromApi});
 const isMyPageAC = (userId) => ({type: IS_MY_PAGE, userId});
+const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
 
 //ThunkCallback
 export const addNewPostThuhnkCallback = (textNewPost) => (dispatch) => {
@@ -68,6 +76,23 @@ export const getProfilePageThunkCallback = (userId = initialState.myId) => (disp
             dispatch(setDisplayedCurrentUser(response.data))
         })
 }
+
+export const getUserStatusThunkCallback = (userId) => (dispatch) => {
+    profileApi.getUserStatus(userId)
+        .then(response => {
+            dispatch(setUserStatus(response.data))
+        })
+};
+
+
+export const updateUserStatusThunkCallback = statusText => dispatch => {
+    profileApi.updateUserStatus(statusText)
+        .then(response => {
+            if(response.data.resultCode === 0) {
+                dispatch(setUserStatus(statusText));
+            }
+        })
+};
 
 export default profileReducer;
 /*

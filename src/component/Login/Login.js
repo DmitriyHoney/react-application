@@ -22,10 +22,11 @@ class Login extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return(
             <div>
                 {this.props.preloader && <Preloader/>}
-                {!this.props.preloader && <LoginForm onSubmit={this.onSubmit}/>}
+                {!this.props.preloader && <LoginForm onSubmit={this.onSubmit} {...this.props}/>}
             </div>
         )
     }
