@@ -23,12 +23,13 @@ import {connect} from "react-redux";
 import {getInitializeStateThunkCallback} from "./Redux/app-reducer";
 
 import Preloader from "./common/Preloader/Preloader";
+import {getAuthPageSelector, getInitializeSelector} from "./utils/selectors/selectors";
 
 
 const mapStateToProps = state => {
     return {
-        initialize: state.app.initialize,
-        authPage: state.authPage
+        initialize: getInitializeSelector(state),
+        authPage: getAuthPageSelector(state)
     }
 }
 
@@ -43,7 +44,7 @@ class App extends React.Component {
             <div className="App">
                 <HeaderContainer authPage={this.props.authPage}/>
                 <div className="main container">
-                    <Aside sidebar={this.props.state.sidebar}/>
+                    <Aside />
                     <Route path='/profile/:userId?' render={() => <ContainerProfile/>}/>
                     <Route path='/dialogs' render={() => <ContainerDialogs/>}/>
                     <Route path='/feed' render={() => <Feed/>}/>

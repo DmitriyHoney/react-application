@@ -6,10 +6,11 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
 import {getProfilePageThunkCallback, getUserStatusThunkCallback} from "../../Redux/profile-reducer";
 import {getProfilePageSelect} from "../../Redux/selectors";
+import {getProfilePageSelector} from "../../utils/selectors/selectors";
 
 let mapStateToProps = (state) => {
     return {
-        profilePage: getProfilePageSelect(state)
+        profilePage: state.profilePage//getProfilePageSelector(state)
     }
 };
 

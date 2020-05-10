@@ -5,10 +5,11 @@ import {changeCurrentPage, followOnUser, getUsers, unFollowOnUser} from "../../R
 import {compose} from "redux";
 import Preloader from "../../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {getUsersPageSelector} from "../../utils/selectors/selectors";
 
 let mapStateToProps = (state) => {
     return {
-        usersPage: state.usersPage,
+        usersPage: getUsersPageSelector(state),
         currentPage: state.usersPage.currentPage,
         countUsers: state.usersPage.countUsers
     }

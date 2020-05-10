@@ -9,7 +9,8 @@ let initialState = {
         {userId: 4, name: 'Harry Potter', src: 'https://avatars.mds.yandex.net/get-zen_doc/236854/pub_5a316bb4830905958b6dbad4_5a316bda77d0e6afcba2ac2d/scale_1200'},
         {userId: 5, name: 'Jack Sheppard', src: 'http://static2.kinootziv.com/source/files/wallpapers/matt/matthewfox67978.jpg'}
     ],
-    chatTextarea: ''
+    chatTextarea: '',
+    failCount: 0
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const messageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chatTextarea: ''
+            }
+        case 'FAIL':
+            return {
+                ...state,
+                failCount: state.failCount + 1
             }
         default:
             return {

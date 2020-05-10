@@ -7,13 +7,17 @@ import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux';
 
+setInterval(() => {
+    store.dispatch({type: 'FAIL'});
+}, 1000);
+
 ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
-        </Provider>
-    </BrowserRouter>,
-    document.getElementById('root')
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+    ,document.getElementById('root')
 );
 
 serviceWorker.unregister();
