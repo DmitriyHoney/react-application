@@ -1,11 +1,12 @@
 import React from 'react';
 import style from './UserInfo.module.css';
 import UserStatus from "../UserStatus/UserStatus";
+import UserStatusFunc from "../UserStatus/UserStatusFunc";
 
 const UserInfo = (props) => {
     return(
         <div className={`${style.userInfo} default-card`}>
-            <UserStatus name={props.name} status={props.status}/>
+            <UserStatusFunc name={props.name} status={props.status} updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}/>
             <AboutMe aboutMe={props.aboutMe}/>
             <UserSocial contacts={props.contacts}/>
         </div>

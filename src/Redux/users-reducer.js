@@ -12,7 +12,8 @@ let initialState = {
     currentPage: 1, //Текущая страница
     totalCount: 3215, //Всего пользователей,
     preloader: false, //Прелоадер при false не показывается
-    usersInSubscribeProcess: []
+    usersInSubscribeProcess: [],
+    count: 0
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.currentPage
+            }
+        case "FAIL":
+            return {
+                ...state,
+                count: state.count + 1
             }
         case TOGGLE_PRELOADER:
             return {

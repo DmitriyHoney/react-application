@@ -4,9 +4,11 @@ import Profile from "./Profile";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
-import {getProfilePageThunkCallback, getUserStatusThunkCallback} from "../../Redux/profile-reducer";
-import {getProfilePageSelect} from "../../Redux/selectors";
-import {getProfilePageSelector} from "../../utils/selectors/selectors";
+import {
+    getProfilePageThunkCallback,
+    getUserStatusThunkCallback,
+    updateUserStatusThunkCallback
+} from "../../Redux/profile-reducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -29,6 +31,7 @@ class ContainerProfile extends React.Component {
         return(
             <Profile
                 profilePage={this.props.profilePage}
+                updateUserStatusThunkCallback={this.props.updateUserStatusThunkCallback}
             />
         )
     }
@@ -37,7 +40,7 @@ class ContainerProfile extends React.Component {
 
 
 export default compose(
-    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback}),
+    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback, updateUserStatusThunkCallback}),
     withAuthRedirect,
     withRouter
 )(ContainerProfile)

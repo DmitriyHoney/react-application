@@ -5,17 +5,18 @@ import ListsFriend from "../ListsFriend/ListsFriend";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {connect} from "react-redux";
+import {getFilterSidebarLinks, getSidebarFriends} from "../../utils/selectors/selectors";
 
 let mapStateToProps = state => {
     return {
-        sidebar: state.sidebar
+        links: getFilterSidebarLinks(state),
+        friends: getSidebarFriends(state),
     }
 }
 
 class Aside extends React.Component {
     render() {
-
-        let renderAsideLinks = this.props.sidebar.links.map((elem, index) => {
+        let renderAsideLinks = this.props.links.map((elem, index) => {
             return <AsideLinks key={index} url={elem.url} icon={elem.icon} text={elem.text}/>;
         });
 
@@ -26,7 +27,7 @@ class Aside extends React.Component {
                         {renderAsideLinks}
                     </ul>
                 </nav>
-                <ListsFriend show='3' state={this.props.sidebar.friends}/>
+                <ListsFriend show='3' state={this.props.friends}/>
             </aside>
         )
     }

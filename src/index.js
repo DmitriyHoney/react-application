@@ -7,9 +7,6 @@ import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux';
 
-setInterval(() => {
-    store.dispatch({type: 'FAIL'});
-}, 1000);
 
 ReactDOM.render(
     <Provider store={store}>

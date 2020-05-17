@@ -7,8 +7,8 @@ import UserStatus from "./UserStatus/UserStatus";
 const Profile = (props) => {
     return (
         <div className={style.profileSection}>
-            <ProfileCard currentUser={props.profilePage.currentUser} status={props.profilePage.status}/>
-            {props.profilePage.isMyPage && <MyPost profilePage={props.profilePage}/>}
+            <ProfileCard currentUser={props.profilePage.currentUser} status={props.profilePage.status} updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}/>
+            {props.profilePage.isMyPage && <MyPost posts={props.profilePage.posts} newPostValue={props.profilePage.newPostValue}/>}
         </div>
     )
 }

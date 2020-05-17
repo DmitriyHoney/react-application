@@ -28,7 +28,7 @@ let initialState = {
     },
     myId: 6722,
     isMyPage: true,
-    status: null
+    status: ''
 };
 
 const profileReducer = (state = initialState, action) => {

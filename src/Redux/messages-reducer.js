@@ -25,11 +25,6 @@ const messageReducer = (state = initialState, action) => {
                 ...state,
                 chatTextarea: ''
             }
-        case 'FAIL':
-            return {
-                ...state,
-                failCount: state.failCount + 1
-            }
         default:
             return {
                 ...state
