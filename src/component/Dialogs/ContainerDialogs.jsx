@@ -4,10 +4,11 @@ import Dialogs from "./Dialogs";
 import {addNewMessageCreateAction, updateMessageTextareaCreateAction} from "../../Redux/messages-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {getDialogsPage} from "../../utils/selectors/selectors";
 
 let mapStateToProps = (state) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: getDialogsPage(state)
     }
 };
 let mapDispatchToProps = (dispatch) => {

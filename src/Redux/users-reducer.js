@@ -69,7 +69,7 @@ const setUsers = (dataFromApi) => ({type: SET_USERS, dataFromApi});
 const setPage = (currentPage) => ({type: SET_PAGE, currentPage});
 const togglePreloader = (bool) => ({type: TOGGLE_PRELOADER, bool});
 const toggleFollowed = (userId, bool) => ({type: TOGGLE_FOLLOWED, userId, bool});
-const addUserToSubscribeStack = (userId) => ({type: ADD_USER_STACK, userId});
+export const addUserToSubscribeStack = (userId) => ({type: ADD_USER_STACK, userId});
 const removeUserToSubscribeStack = (userId) => ({type: REMOVE_USER_STACK, userId});
 //Thunks
 export const getUsers = (currentPage, countUsers) => (dispatch) => {

@@ -4,6 +4,7 @@ const ADD_USER_POST = 'ADD_USER_POST';
 const SET_DISPLAYED_USER = 'SET_DISPLAYED_USER';
 const IS_MY_PAGE = 'IS_MY_PAGE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     posts: [
@@ -53,6 +54,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter((post,index) => index != action.postId)
+            }
         default:
             return {...state};
     }
@@ -60,10 +66,11 @@ const profileReducer = (state = initialState, action) => {
 
 
 //ActionCreator
-const addNewPostCreateAction = (textNewPost) => ({type: ADD_USER_POST, textNewPost});
+export const addNewPostCreateAction = (textNewPost) => ({type: ADD_USER_POST, textNewPost});
 const setDisplayedCurrentUser = (userDataFromApi) => ({type: SET_DISPLAYED_USER, userDataFromApi});
 const isMyPageAC = (userId) => ({type: IS_MY_PAGE, userId});
 const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
+export const deleteUserPost = (postId) => ({type: DELETE_POST, postId});
 
 //ThunkCallback
 export const addNewPostThuhnkCallback = (textNewPost) => (dispatch) => {
@@ -76,7 +83,6 @@ export const getProfilePageThunkCallback = (userId = initialState.myId) => (disp
             dispatch(setDisplayedCurrentUser(response.data))
         })
 }
-
 export const getUserStatusThunkCallback = (userId) => (dispatch) => {
     profileApi.getUserStatus(userId)
         .then(response => {
