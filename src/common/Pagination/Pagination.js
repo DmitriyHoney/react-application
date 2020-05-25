@@ -2,14 +2,15 @@ import React from "react";
 import s from './Pagination.module.css';
 
 const Pagination = (props) => {
-    let createArray = (from, to) => {
+    let createArray = (firstBtn) => {
         let result = [];
-        for (let i = from; i <= to; i++) {
-            result.push(i);
+        for(let i = 1; i <= 10; i++) {
+            result.push(firstBtn++);
+            console.log(i);
         }
         return result;
-    }
-    let btnsList = createArray(1, props.quantityBtn).map(btn => {
+    };
+    let btnsList = createArray(10).map(btn => {
         return (
             <span
                 key={btn}
@@ -19,10 +20,17 @@ const Pagination = (props) => {
                 {btn}
             </span>
         )
-    })
+    });
+
+
+    let handleNextBtn = () => {
+
+    }
     return(
         <div>
+            <button className={'main-btn'} onClick={handleNextBtn}>Prev</button>
             {btnsList}
+            <button className={'main-btn'}>Next</button>
         </div>
     )
 }

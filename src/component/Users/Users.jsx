@@ -20,10 +20,10 @@ const Users = (props) => {
     return(
         <div className={style.usersList}>
             <Pagination
-                quantityBtn={Math.ceil(props.totalCount / props.countUsers)}
-                currentPage={props.currentPage}
-                changePage={props.changePage}
-                unFollowOnUser={props.unFollowOnUser}
+                currentPage={props.currentPage} //Текущая страница для выделения
+                changePage={props.changePage} //Запрос на сервер
+                portions={10} //Сколько отображаем кнопок за раз
+                allPages={Math.ceil(props.totalCount / 7)}
             />
             {props.preloader ? UserList : <Preloader/>}
         </div>

@@ -1,10 +1,10 @@
 import {authApi} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const TOGGLE_AUTH = 'TOGGLE_AUTH';
-const SET_USER_DATA = 'SET_USER_DATA';
-const TOGGLE_PRELOADER = 'TOGGLE_PRELOADER';
-const SET_DEFAULT_STATE = 'SET_DEFAULT_STATE';
+const TOGGLE_AUTH = 'samurai-network/auth-reducer/TOGGLE_AUTH';
+const SET_USER_DATA = 'samurai-network/auth-reducer/SET_USER_DATA';
+const TOGGLE_PRELOADER = 'samurai-network/auth-reducer/TOGGLE_PRELOADER';
+const SET_DEFAULT_STATE = 'samurai-network/auth-reducer/SET_DEFAULT_STATE';
 
 let initialState = {
     isAuth: false,
@@ -31,7 +31,7 @@ const authReducer = (state = initialState, action) => {
                 preloader: false
             }
         default:
-            return {...state};
+            return state;
     }
 };
 
@@ -40,36 +40,33 @@ const toggleAuthState = (bool) => ({type: TOGGLE_AUTH, bool});
 const togglePreloader = (bool) => ({type: TOGGLE_PRELOADER, bool});
 const setUserData = (stateFromApi) => ({type: SET_USER_DATA, stateFromApi});
 const setDefaultState = () => ({type: SET_DEFAULT_STATE});
-//Thunck
-export const getAuthStateUser = () => (dispatch) => {
-    return authApi.getAuthState()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(toggleAuthState(true));
-                dispatch(setUserData(response.data.data));
-            } else {
-                dispatch(toggleAuthState(false));
-            }
-        })
+//Thunk
+export const getAuthStateUser = () => async (dispatch) => {
+    let response = await authApi.getAuthState();
+
+    if (response.data.resultCode === 0) {
+        dispatch(toggleAuthState(true));
+        dispatch(setUserData(response.data.data));
+    } else {
+        dispatch(toggleAuthState(false));
+    }
 };
-export const loginTheSiteThunkCallback = (formData) => (dispatch) => {
-    authApi.loginTheSite(formData)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(toggleAuthState(true));
-                dispatch(getAuthStateUser());
-            } else {
-                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Unknown error';
-                dispatch(togglePreloader(false));
-                dispatch(stopSubmit('loginForm', {_error: message}))
-            }
-        })
+
+export const loginTheSiteThunkCallback = (formData) => async (dispatch) => {
+    const response = await authApi.loginTheSite(formData);
+
+    if (response.data.resultCode === 0) {
+        dispatch(toggleAuthState(true));
+        dispatch(getAuthStateUser());
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Unknown error';
+        dispatch(togglePreloader(false));
+        dispatch(stopSubmit('loginForm', {_error: message}))
+    }
 }
-export const logoutTheSiteCallback = () => (dispatch) => {
-    authApi.logOutTheSite()
-        .then(response => {
-            dispatch(setDefaultState())
-        })
+export const logoutTheSiteCallback = () => async (dispatch) => {
+    await authApi.logOutTheSite();
+    dispatch(setDefaultState())
 }
 
 export default authReducer;

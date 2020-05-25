@@ -4,11 +4,11 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {updateUserStatusThunkCallback} from "../../../Redux/profile-reducer";
 
-class UserStatus extends React.Component {
+export class UserStatus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'setStatus',
+            status: props.status,
             editMode: false
         }
     }

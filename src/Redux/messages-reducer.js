@@ -1,5 +1,5 @@
-const UPDATE_MESSAGE_TEXTAREA   = 'UPDATE-MESSAGE-TEXTAREA';
-const ADD_NEW_MESSAGE           = 'ADD-NEW-MESSAGE';
+const UPDATE_MESSAGE_TEXTAREA   = 'samurai-network/messages-reducer/UPDATE-MESSAGE-TEXTAREA';
+const ADD_NEW_MESSAGE           = 'samurai-network/messages-reducer/ADD-NEW-MESSAGE';
 
 let initialState = {
     friends: [

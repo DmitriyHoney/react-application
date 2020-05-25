@@ -1,10 +1,10 @@
 import {profileApi} from "../api/api";
 
-const ADD_USER_POST = 'ADD_USER_POST';
-const SET_DISPLAYED_USER = 'SET_DISPLAYED_USER';
-const IS_MY_PAGE = 'IS_MY_PAGE';
-const SET_USER_STATUS = 'SET_USER_STATUS';
-const DELETE_POST = 'DELETE_POST';
+const ADD_USER_POST = 'samurai-network/profile-reducer/ADD_USER_POST';
+const SET_DISPLAYED_USER = 'samurai-network/profile-reducer/SET_DISPLAYED_USER';
+const IS_MY_PAGE = 'samurai-network/profile-reducer/IS_MY_PAGE';
+const SET_USER_STATUS = 'samurai-network/profile-reducer/SET_USER_STATUS';
+const DELETE_POST = 'samurai-network/profile-reducer/DELETE_POST';
 
 let initialState = {
     posts: [
@@ -76,39 +76,24 @@ export const deleteUserPost = (postId) => ({type: DELETE_POST, postId});
 export const addNewPostThuhnkCallback = (textNewPost) => (dispatch) => {
     dispatch(addNewPostCreateAction(textNewPost));
 }
-export const getProfilePageThunkCallback = (userId = initialState.myId) => (dispatch) => {
-    dispatch(isMyPageAC(userId))
-    profileApi.getProfilePeople(userId)
-        .then(response => {
-            dispatch(setDisplayedCurrentUser(response.data))
-        })
+export const getProfilePageThunkCallback = (userId = initialState.myId) => async (dispatch) => {
+    await dispatch(isMyPageAC(userId))
+    const response = await profileApi.getProfilePeople(userId)
+    dispatch(setDisplayedCurrentUser(response.data))
+
 }
-export const getUserStatusThunkCallback = (userId) => (dispatch) => {
-    profileApi.getUserStatus(userId)
-        .then(response => {
-            dispatch(setUserStatus(response.data))
-        })
+export const getUserStatusThunkCallback = (userId) => async (dispatch) => {
+    const response = await profileApi.getUserStatus(userId);
+    dispatch(setUserStatus(response.data))
 };
 
 
-export const updateUserStatusThunkCallback = statusText => dispatch => {
-    profileApi.updateUserStatus(statusText)
-        .then(response => {
-            if(response.data.resultCode === 0) {
-                dispatch(setUserStatus(statusText));
-            }
-        })
+export const updateUserStatusThunkCallback = statusText => async dispatch => {
+    const response = await profileApi.updateUserStatus(statusText)
+
+    if(response.data.resultCode === 0) {
+        dispatch(setUserStatus(statusText));
+    }
 };
 
 export default profileReducer;
-/*
-    aboutMe: null
-    contacts: {facebook: null, website: null, vk: null, twitter: null, instagram: null, …}
-    lookingForAJob: false
-    lookingForAJobDescription: null
-    fullName: "WhiteHoney"
-    userId: 6722
-    photos:
-        small: null
-    large: null
- */
