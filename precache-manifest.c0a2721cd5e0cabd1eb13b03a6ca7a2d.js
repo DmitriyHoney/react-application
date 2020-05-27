@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fd6b9c3861d0f478d169c30141febf3c",
+    "revision": "8a35639f1203c5f6ad19e618e9181e4d",
     "url": "/social-app/index.html"
   },
   {
@@ -8,44 +8,44 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/social-app/static/css/3.e8e3a04e.chunk.css"
   },
   {
-    "revision": "e776a580eb6ace697a06",
+    "revision": "83d97da29bbae317f38c",
     "url": "/social-app/static/css/4.5cffb379.chunk.css"
   },
   {
-    "revision": "34ae70e38d5b77cc033f",
+    "revision": "00527bf2d3dd7b5d81b0",
     "url": "/social-app/static/css/5.6117ae79.chunk.css"
   },
   {
-    "revision": "598245debe6799d4b2b7",
+    "revision": "80800abee763ca13c7dd",
     "url": "/social-app/static/css/main.8633cf80.chunk.css"
   },
   {
-    "revision": "5ca9e0acad1910c98a1b",
-    "url": "/social-app/static/js/2.cf9a1304.chunk.js"
+    "revision": "5b799e06069847a7b458",
+    "url": "/social-app/static/js/2.61955474.chunk.js"
   },
   {
     "revision": "928d7b5eb39d16fe9a880722c974b51e",
-    "url": "/social-app/static/js/2.cf9a1304.chunk.js.LICENSE.txt"
+    "url": "/social-app/static/js/2.61955474.chunk.js.LICENSE.txt"
   },
   {
     "revision": "8aa33bb58201c6676bab",
     "url": "/social-app/static/js/3.aa2a853c.chunk.js"
   },
   {
-    "revision": "e776a580eb6ace697a06",
-    "url": "/social-app/static/js/4.f00dda22.chunk.js"
+    "revision": "83d97da29bbae317f38c",
+    "url": "/social-app/static/js/4.b9fd2e4d.chunk.js"
   },
   {
-    "revision": "34ae70e38d5b77cc033f",
-    "url": "/social-app/static/js/5.c1282029.chunk.js"
+    "revision": "00527bf2d3dd7b5d81b0",
+    "url": "/social-app/static/js/5.1d511189.chunk.js"
   },
   {
-    "revision": "598245debe6799d4b2b7",
-    "url": "/social-app/static/js/main.b2e3a061.chunk.js"
+    "revision": "80800abee763ca13c7dd",
+    "url": "/social-app/static/js/main.e2117ba4.chunk.js"
   },
   {
-    "revision": "a721ee84098cc8c129ff",
-    "url": "/social-app/static/js/runtime-main.3e257b68.js"
+    "revision": "5cdaca25d059f63c36c0",
+    "url": "/social-app/static/js/runtime-main.3cfc9b41.js"
   },
   {
     "revision": "cdb366b278651026b7090dcde336bca4",
