@@ -1,5 +1,5 @@
 //Libraries
-import React from 'react';
+import React, {Suspense} from 'react';
 import {Route} from "react-router-dom";
 
 //Styles
@@ -11,9 +11,7 @@ import Aside from './component/Aside/Aside';
 import Feed from "./component/Feed/Feed";
 import Friend from "./component/Friend/Friend";
 
-import ContainerDialogs from "./component/Dialogs/ContainerDialogs";
-import ContainerProfile from "./component/Profile/ContainerProfile";
-import ContainerUsers from "./component/Users/ContainerUsers";
+
 import Login from "./component/Login/Login";
 import HeaderContainer from "./component/Header/HeaderContainer";
 
@@ -24,7 +22,11 @@ import {getInitializeStateThunkCallback} from "./Redux/app-reducer";
 
 import Preloader from "./common/Preloader/Preloader";
 import {getAuthPageSelector, getInitializeSelector} from "./utils/selectors/selectors";
+import withSuspense from "./hoc/withSuspense";
 
+const ContainerUsers = React.lazy(() => import('./component/Users/ContainerUsers'));
+const ContainerProfile = React.lazy(() => import('./component/Profile/ContainerProfile'));
+const ContainerDialogs = React.lazy(() => import("./component/Dialogs/ContainerDialogs"));
 
 const mapStateToProps = state => {
     return {
@@ -45,13 +47,13 @@ class App extends React.Component {
                 <HeaderContainer authPage={this.props.authPage}/>
                 <div className="main container">
                     <Aside />
-                    <Route path='/profile/:userId?' render={() => <ContainerProfile/>}/>
-                    <Route path='/dialogs' render={() => <ContainerDialogs/>}/>
-                    <Route path='/feed' render={() => <Feed/>}/>
-                    <Route path='/friend' render={() => <Friend/>}/>
-                    <Route path='/users' render={() => <ContainerUsers/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
-                    <Route path='/training' render={() => <TrainSection/>}/>
+                        <Route path='/profile/:userId?' render={() => withSuspense(ContainerProfile)}/>
+                        <Route path='/dialogs' render={() => withSuspense(ContainerDialogs)}/>
+                        <Route path='/feed' render={() => <Feed/>}/>
+                        <Route path='/friend' render={() => <Friend/>}/>
+                        <Route path='/users' render={() => withSuspense(ContainerUsers)}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='/training' render={() => <TrainSection/>}/>
                 </div>
             </div>
         )

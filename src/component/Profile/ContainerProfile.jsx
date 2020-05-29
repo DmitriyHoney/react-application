@@ -6,7 +6,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
 import {
     getProfilePageThunkCallback,
-    getUserStatusThunkCallback,
+    getUserStatusThunkCallback, savePhotoThunkCallback,
     updateUserStatusThunkCallback
 } from "../../Redux/profile-reducer";
 
@@ -16,20 +16,35 @@ let mapStateToProps = (state) => {
     }
 };
 
-class ContainerProfile extends React.Component {
+class ContainerProfile extends React.PureComponent {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() { //Запрос страницы пользователя, если userId нет, тогда переход на свою страницу
+        this.requestUserData();
+    }
+
+    requestUserData = () => {
         let userId = this.props.match.params.userId;
         this.props.getProfilePageThunkCallback(userId);
         this.props.getUserStatusThunkCallback(userId);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.requestUserData();
+        }
+    }
+
+    savePhoto = (photoFile) => {
+        this.props.savePhotoThunkCallback(photoFile);
+    }
+
     render() {
         return(
             <Profile
+                savePhoto={this.savePhoto}
                 profilePage={this.props.profilePage}
                 updateUserStatusThunkCallback={this.props.updateUserStatusThunkCallback}
             />
@@ -40,7 +55,7 @@ class ContainerProfile extends React.Component {
 
 
 export default compose(
-    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback, updateUserStatusThunkCallback}),
+    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback, updateUserStatusThunkCallback, savePhotoThunkCallback}),
     withAuthRedirect,
     withRouter
 )(ContainerProfile)

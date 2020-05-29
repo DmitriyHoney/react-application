@@ -7,7 +7,7 @@ const ProfileCard = (props) => {
     let {aboutMe, contacts: {...contacts}, lookingForAJob, lookingForAJobDescription, fullName, userId, photos: {...photos}} = props.currentUser;
     return(
         <div className={s.profileSection}>
-            <MainAvatar avatarSrc={photos.large}/>
+            <MainAvatar avatarSrc={photos.large} savePhoto={props.savePhoto}/>
             <UserInfo name={fullName} aboutMe={aboutMe} contacts={contacts} status={props.status} updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}/>
         </div>
     )

@@ -8,9 +8,9 @@ const ADD_USER_STACK = 'samurai-network/users-reducer/ADD_USER_STACK';
 const REMOVE_USER_STACK = 'samurai-network/users-reducer/REMOVE_USER_STACK';
 
 let initialState = {
-    countUsers: 7, //Пользователей на странице
+    pageSize: 10, //Пользователей на странице
     currentPage: 1, //Текущая страница
-    totalCount: 3215, //Всего пользователей,
+    totalCount: null, //Всего пользователей,
     preloader: false, //Прелоадер при false не показывается
     usersInSubscribeProcess: [],
     count: 0,

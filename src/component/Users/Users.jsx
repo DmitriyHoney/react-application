@@ -22,8 +22,9 @@ const Users = (props) => {
             <Pagination
                 currentPage={props.currentPage} //Текущая страница для выделения
                 changePage={props.changePage} //Запрос на сервер
-                portions={10} //Сколько отображаем кнопок за раз
-                allPages={Math.ceil(props.totalCount / 7)}
+                portions={5} //Сколько отображаем кнопок за раз
+                pageSize={props.pageSize}
+                totalCount={props.totalCount}
             />
             {props.preloader ? UserList : <Preloader/>}
         </div>

@@ -1,36 +1,44 @@
-
-
 import React from "react";
-import {Field, reduxForm} from "redux-form";
-import {requireField} from "../../utils/validator/validator";
-import {customInput} from "../../common/FormsControls/FormsControls";
 
-const UsualForm = props => {
-    return(
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field type="text" placeholder={"Name"} component={customInput} name={"name"} validate={[requireField]}/>
-            </div>
-            <div>
-                <Field type="text" placeholder={"Age"} component={"input"} name={"age"}/>
-            </div>
-            <button className="main-btn">Send</button>
-        </form>
-    )
+class HandleError extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {hasError: false}
+    }
+
+    static getDerivedStateFromError(err) {
+        this.setState({hasError: true});
+    }
+
+    render() {
+        if(this.state.hasError) {
+            return <div>Что-то пошло не так</div>;
+        }
+        return this.props.children
+    }
 };
 
-const UsualFormContainer = props => {
-    let handleSubmit = formData => {
-        console.log(formData);
-    };
-    return(
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {count: 0}
+    }
+
+    render() {
+        if(this.state.count === 5) throw new Error('More than 5 was clicked');
+        return <p onClick={() => this.setState({count: this.state.count + 1})}>{this.state.count}</p>
+    }
+};
+
+
+function Final() {
+    return (
         <div>
-            <ReduxForm onSubmit={handleSubmit}/>
+            <Counter />
         </div>
-    )
+    );
 }
 
-const ReduxForm = reduxForm({form: 'bank'})(UsualForm);
+export default Final;
 
 
-export default UsualFormContainer;

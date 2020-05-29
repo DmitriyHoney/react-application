@@ -5,6 +5,7 @@ const SET_DISPLAYED_USER = 'samurai-network/profile-reducer/SET_DISPLAYED_USER';
 const IS_MY_PAGE = 'samurai-network/profile-reducer/IS_MY_PAGE';
 const SET_USER_STATUS = 'samurai-network/profile-reducer/SET_USER_STATUS';
 const DELETE_POST = 'samurai-network/profile-reducer/DELETE_POST';
+const SAVE_PHOTO = 'samurai-network/profile-reducer/SAVE_PHOTO';
 
 let initialState = {
     posts: [
@@ -39,6 +40,17 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: [{message: action.textNewPost, likeCount: 0}, ...state.posts]
             }
+        case SAVE_PHOTO:
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    photos: {
+                        small: action.photos.small,
+                        large: action.photos.large
+                    }
+                }
+            }
         case SET_DISPLAYED_USER:
             return {
                 ...state,
@@ -57,7 +69,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST:
             return {
                 ...state,
-                posts: state.posts.filter((post,index) => index != action.postId)
+                posts: state.posts.filter((post, index) => index != action.postId)
             }
         default:
             return {...state};
@@ -71,6 +83,7 @@ const setDisplayedCurrentUser = (userDataFromApi) => ({type: SET_DISPLAYED_USER,
 const isMyPageAC = (userId) => ({type: IS_MY_PAGE, userId});
 const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
 export const deleteUserPost = (postId) => ({type: DELETE_POST, postId});
+export const savePhotoActionCreator = (photos) => ({type: SAVE_PHOTO, photos});
 
 //ThunkCallback
 export const addNewPostThuhnkCallback = (textNewPost) => (dispatch) => {
@@ -87,11 +100,16 @@ export const getUserStatusThunkCallback = (userId) => async (dispatch) => {
     dispatch(setUserStatus(response.data))
 };
 
+export const savePhotoThunkCallback = photoFile => async dispatch => {
+    const response = await profileApi.savePhotoToServer(photoFile);
+    dispatch(savePhotoActionCreator(response.data.data.photos));
+};
+
 
 export const updateUserStatusThunkCallback = statusText => async dispatch => {
     const response = await profileApi.updateUserStatus(statusText)
 
-    if(response.data.resultCode === 0) {
+    if (response.data.resultCode === 0) {
         dispatch(setUserStatus(statusText));
     }
 };
