@@ -1,0 +1,31 @@
+.textarea {
+    border: 1px solid grey;
+    resize: none;
+}
+
+.wrapEdit {
+    padding: 10px;
+    border: 1px solid #59b0ff;
+    border-radius: 5px;
+}
+
+.contacts > div{
+    margin-left: 25px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.contacts span{
+    width: 90px;
+    display: inline-block;
+}
+
+.contacts input{
+    margin-left: 10px;
+}
+
+.error {
+    border: 1px solid red;
+    color: red;
+    font-size: 12px;
+}

@@ -12,6 +12,8 @@ const Profile = (props) => {
                 status={props.profilePage.status}
                 updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}
                 savePhoto={props.savePhoto}
+                isMyPage={props.profilePage.isMyPage}
+                handleProfileEditForm={props.handleProfileEditForm}
             />
             {props.profilePage.isMyPage && <MyPost posts={props.profilePage.posts} newPostValue={props.profilePage.newPostValue}/>}
         </div>

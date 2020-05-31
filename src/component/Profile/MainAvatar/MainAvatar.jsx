@@ -15,9 +15,13 @@ const MainAvatar = (props) => {
             <a href="#" className={style.avatarImg}>
                 <img src={props.avatarSrc || defaultUser} alt="avatar" className={style.avatarImg} />
             </a>
-            <div className={style.avatarEdit}>
-                <input type="file" onChange={handleInput}/>
-            </div>
+            {props.isMyPage
+                && (<div className={style.avatarEdit}>
+                        <input type="file" onChange={handleInput}/>
+                    </div>
+                    )
+            }
+
         </div>
     )
 }

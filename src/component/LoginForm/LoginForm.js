@@ -21,14 +21,14 @@ class LoginForm extends React.Component{
     }
 
     render() {
-        console.log(this.props);
         if (this.props.isAuth) return <Redirect to='/profile' />
-        else return <LoginFormComponent handleSubmit={this.props.handleSubmit} error={this.props.error}/>
+        else return <LoginFormComponent handleSubmit={this.props.handleSubmit} error={this.props.error} captchaUrl={this.props.captchaUrl}/>
     }
 
 };
 
 const LoginFormComponent = props => {
+    console.log(props);
     return(
         <div className={`default-card ${s.loginForm}`}>
             <form className="form" onSubmit={props.handleSubmit}>
@@ -38,6 +38,12 @@ const LoginFormComponent = props => {
                     <label htmlFor="rememberMe">Remember me</label>
                     <Field name="rememberMe" type="checkbox" component={"input"} className={s.remember}/>
                 </div>
+                {props.captchaUrl && (
+                    <div>
+                        <div><img src={props.captchaUrl} alt="captcha"/></div>
+                        <Field name="captcha" type="text" component={"input"}/>
+                    </div>
+                )}
                 <button className="main-btn">Войти</button>
                 {props.error &&
                     <div className={s.commonError}>

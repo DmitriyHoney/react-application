@@ -1,14 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './UserInfo.module.css';
-import UserStatus from "../UserStatus/UserStatus";
 import UserStatusFunc from "../UserStatus/UserStatusFunc";
+import EditProfileReduxForm from "../EditProfileForm/EditProfileForm";
 
-const UserInfo = (props) => {
+const UserInfo = props => {
+    let [editMode, setEditMode] = useState(false);
+
+    const toggleEditMode = (bool) => {
+        setEditMode(bool);
+    };
+    const hadleProfileEditForms = formData => {
+        props.handleProfileEditForm(formData).then(
+            () => toggleEditMode(false),
+            () => toggleEditMode(true)
+        );
+    }
+
     return(
         <div className={`${style.userInfo} default-card`}>
-            <UserStatusFunc name={props.name} status={props.status} updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}/>
+            <UserStatusFunc
+                name={props.fullName} status={props.status}
+                updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}
+            />
             <AboutMe aboutMe={props.aboutMe}/>
+            <div>
+                <p>В поисках работы: {props.lookingForAJob ? 'true' : 'false'}</p>
+                <p>Описание для работодателя: {props.lookingForAJobDescription}</p>
+            </div>
             <UserSocial contacts={props.contacts}/>
+            {props.isMyPage && <button onClick={() => toggleEditMode(true)}>Edit</button>}
+            {editMode && <EditProfileReduxForm onSubmit={hadleProfileEditForms} initialValues={props} />}
         </div>
     )
 }
@@ -26,6 +47,7 @@ const AboutMe = props => {
         </div>
     )
 };
+
 const UserSocial = props => {
     function getSocialList(objContacts) {
         let result = [];

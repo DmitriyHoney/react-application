@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 import {
     getProfilePageThunkCallback,
     getUserStatusThunkCallback, savePhotoThunkCallback,
-    updateUserStatusThunkCallback
+    updateUserStatusThunkCallback, handleProfileEditFormThunkCallback
 } from "../../Redux/profile-reducer";
 
 let mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-class ContainerProfile extends React.PureComponent {
+class ContainerProfile extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -26,7 +26,7 @@ class ContainerProfile extends React.PureComponent {
     }
 
     requestUserData = () => {
-        let userId = this.props.match.params.userId;
+        let userId = this.props.match.params.userId || this.props.profilePage.myId;
         this.props.getProfilePageThunkCallback(userId);
         this.props.getUserStatusThunkCallback(userId);
     }
@@ -38,8 +38,9 @@ class ContainerProfile extends React.PureComponent {
     }
 
     savePhoto = (photoFile) => {
-        this.props.savePhotoThunkCallback(photoFile);
+        return this.props.savePhotoThunkCallback(photoFile);
     }
+
 
     render() {
         return(
@@ -47,6 +48,7 @@ class ContainerProfile extends React.PureComponent {
                 savePhoto={this.savePhoto}
                 profilePage={this.props.profilePage}
                 updateUserStatusThunkCallback={this.props.updateUserStatusThunkCallback}
+                handleProfileEditForm={this.props.handleProfileEditFormThunkCallback}
             />
         )
     }
@@ -55,7 +57,10 @@ class ContainerProfile extends React.PureComponent {
 
 
 export default compose(
-    connect(mapStateToProps, {getProfilePageThunkCallback, getUserStatusThunkCallback, updateUserStatusThunkCallback, savePhotoThunkCallback}),
+    connect(mapStateToProps, {
+        getProfilePageThunkCallback, getUserStatusThunkCallback, updateUserStatusThunkCallback,
+        savePhotoThunkCallback, handleProfileEditFormThunkCallback
+    }),
     withAuthRedirect,
     withRouter
 )(ContainerProfile)

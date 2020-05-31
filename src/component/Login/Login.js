@@ -8,7 +8,8 @@ import Preloader from "../../common/Preloader/Preloader";
 
 let mapStateToProps = (state) => {
     return {
-        preloader: state.authPage.preloader
+        preloader: state.authPage.preloader,
+        captchaUrl: state.authPage.captchaUrl
     }
 };
 
@@ -26,13 +27,11 @@ class Login extends React.Component {
         return(
             <div>
                 {this.props.preloader && <Preloader/>}
-                {!this.props.preloader && <LoginForm onSubmit={this.onSubmit} {...this.props}/>}
+                {!this.props.preloader && <LoginForm onSubmit={this.onSubmit} {...this.props} captchaUrl={this.props.captchaUrl}/>}
             </div>
         )
     }
-
 }
-
 
 
 export default compose(

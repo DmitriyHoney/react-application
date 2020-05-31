@@ -25,12 +25,15 @@ export const authApi = {
         return instance.get(`auth/me`)
     },
     loginTheSite(formData) {
-        let {email, password, rememberMe} = formData;
-        return instance.post(`auth/login`, {email, password, rememberMe})
+        let {email, password, rememberMe, captcha} = formData;
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha})
     },
     logOutTheSite() {
         return instance.delete(`auth/login`)
     },
+    requestCaptcha() {
+        return instance.get(`security/get-captcha-url`);
+    }
 }
 
 export const profileApi = {
@@ -48,6 +51,34 @@ export const profileApi = {
         formData.append("image", photoFile);
         return instance.put(`profile/photo`, formData, {
             headers: { 'content-type': 'multipart/form-data' }
+        })
+    },
+    sendEditProfileSettings(formData) {
+        let {
+            userId = 6722,
+            lookingForAJob,
+            lookingForAJobDescription,
+            aboutMe: AboutMe,
+            fullName,
+            github,
+            vk,
+            facebook,
+            instagram,
+            twitter,
+            website,
+            youtube,
+            mainLink
+        } = formData;
+
+        return instance.put(`profile`, {
+            userId,
+            lookingForAJob,
+            lookingForAJobDescription,
+            fullName,
+            AboutMe,
+            contacts: {
+                github, vk, facebook, instagram, twitter, website, youtube, mainLink
+            }
         })
     }
 }

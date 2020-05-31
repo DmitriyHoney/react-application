@@ -4,11 +4,18 @@ import MainAvatar from "../MainAvatar/MainAvatar";
 import UserInfo from "../UserInfo/UserInfo";
 
 const ProfileCard = (props) => {
-    let {aboutMe, contacts: {...contacts}, lookingForAJob, lookingForAJobDescription, fullName, userId, photos: {...photos}} = props.currentUser;
     return(
         <div className={s.profileSection}>
-            <MainAvatar avatarSrc={photos.large} savePhoto={props.savePhoto}/>
-            <UserInfo name={fullName} aboutMe={aboutMe} contacts={contacts} status={props.status} updateUserStatusThunkCallback={props.updateUserStatusThunkCallback}/>
+            <MainAvatar
+                avatarSrc={props.currentUser.photos.large}
+                savePhoto={props.savePhoto}
+                isMyPage={props.isMyPage}
+            />
+            <UserInfo
+                {...props.currentUser}
+                isMyPage={props.isMyPage}
+                handleProfileEditForm={props.handleProfileEditForm}
+            />
         </div>
     )
 }
