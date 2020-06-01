@@ -28,7 +28,6 @@ class LoginForm extends React.Component{
 };
 
 const LoginFormComponent = props => {
-    console.log(props);
     return(
         <div className={`default-card ${s.loginForm}`}>
             <form className="form" onSubmit={props.handleSubmit}>

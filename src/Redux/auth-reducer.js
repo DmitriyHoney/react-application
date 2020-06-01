@@ -66,7 +66,6 @@ export const sendCaptchaRequestThunkCallback = () => async dispatch => {
     const response = await authApi.requestCaptcha();
     const captchaURL = response.data.url;
     dispatch(setCaptchaUrlAC(captchaURL))
-    debugger;
 }
 
 export const loginTheSiteThunkCallback = (formData) => async (dispatch) => {
