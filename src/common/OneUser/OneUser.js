@@ -1,6 +1,6 @@
 import React from "react";
 import s from './OneUser.module.css';
-import defaultUser from "../../assets/image/default-usaer.jpg";
+import defaultUser from "../../assets/image/default-user.png";
 import {NavLink} from "react-router-dom";
 
 const OneUser = (props) => {
