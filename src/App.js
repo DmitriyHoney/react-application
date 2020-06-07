@@ -47,13 +47,13 @@ class App extends React.Component {
                 <HeaderContainer authPage={this.props.authPage}/>
                 <div className="main container">
                     <Aside />
-                        <Route path='/profile/:userId?' render={() => withSuspense(ContainerProfile)}/>
-                        <Route path='/dialogs' render={() => withSuspense(ContainerDialogs)}/>
-                        <Route path='/feed' render={() => <Feed/>}/>
-                        <Route path='/friend' render={() => <Friend/>}/>
-                        <Route path='/users' render={() => withSuspense(ContainerUsers)}/>
-                        <Route path='/login' render={() => <Login/>}/>
-                        <Route path='/training' render={() => <TrainSection/>}/>
+                    <Route path='/profile/:userId?' render={() => withSuspense(ContainerProfile)}/>
+                    <Route path='/dialogs' render={() => withSuspense(ContainerDialogs)}/>
+                    <Route path='/feed' render={() => <Feed/>}/>
+                    <Route path='/friend' render={() => <Friend/>}/>
+                    <Route path='/users' render={() => withSuspense(ContainerUsers)}/>
+                    <Route path='/login' render={() => <Login/>}/>
+                    <Route path='/training' render={() => <TrainSection/>}/>
                 </div>
             </div>
         )

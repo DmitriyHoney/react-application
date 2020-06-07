@@ -54,9 +54,10 @@ export const getAuthStateUser = () => async (dispatch) => {
     let response = await authApi.getAuthState();
 
     if (response.data.resultCode === 0) {
+
         dispatch(setUserIdAC(response.data.data.id)); //Установить ID пользователя
-        dispatch(toggleAuthState(true));
-        dispatch(setUserData(response.data.data));
+        dispatch(toggleAuthState(true)); //Сообщаю что пользователь авторизован в true
+        dispatch(setUserData(response.data.data)); //Устанавливаю данные пользователя с сервера
     } else {
         dispatch(toggleAuthState(false));
     }
